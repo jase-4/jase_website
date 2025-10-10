@@ -27,7 +27,12 @@
 <div class="container">
   <main>
     <h1>{{ .Title }}</h1>
-    <p><em>{{ .Date.Format "Jan 2, 2006" }}</em></p>
+   {{ if .Params.season }}
+  <p class="project-season">{{ .Params.season }}</p>
+{{ end }}
+ {{ if .Params.github }}
+    <a href="{{ .Params.github }}" target="_blank" class="github-link">View on GitHub →</a>
+  {{ end }}
     <article>{{ .Content }}</article>
    <p class="back-link"><a href="/posts/">← Back to Projects</a></p>
   </main>

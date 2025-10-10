@@ -1,10 +1,11 @@
 ---
 title: "Embedded Distributed Sensor Network"
-date: 2025-07-01
+season: "Summer - Fall 2025"
 draft: false
 thumbnail: "thumbs/embed2.png"
 video: "thumbs/embed3.mp4" 
 description: "Distributed CAN bus network using Rust (Embassy) on ESP32 nodes and C++ (FreeRTOS) on STM32"
+github: "https://github.com/jase-4/embedded-sensor-network" 
 weight: 2
 ---
 

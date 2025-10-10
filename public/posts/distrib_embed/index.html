@@ -27,7 +27,12 @@
 <div class="container">
   <main>
     <h1>Embedded Distributed Sensor Network</h1>
-    <p><em>Jul 1, 2025</em></p>
+   
+  <p class="project-season">Summer - Fall 2025</p>
+
+ 
+    <a href="https://github.com/jase-4/embedded-sensor-network" target="_blank" class="github-link">View on GitHub →</a>
+  
     <article><h2 id="overview">Overview</h2>
 <p>I built an embedded system that fuses accelerometer and gyroscope data from an <strong>MPU-6050</strong> on an <strong>ESP32</strong> using <strong>Rust</strong> and <strong>Embassy</strong>. The fused data is then sent over <strong>CAN bus</strong> to an <strong>STM32</strong> running <strong>FreeRTOS</strong>, where a simple sensor fusion algorithm processes it further. The STM32 then transmits the processed data over CAN bus again to another ESP32 (also running Rust and Embassy), which sends it over <strong>Wi-Fi</strong> to a <strong>Python server</strong> for real-time display.</p>
 <p>This setup gave me a working distributed embedded system — multiple microcontrollers communicating over CAN and Wi-Fi, sharing real sensor data in real time.</p>

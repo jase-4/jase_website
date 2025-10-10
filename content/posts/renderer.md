@@ -1,10 +1,11 @@
 ---
 title: "OpenGL Renderer"
-date: 2025-07-01
+season: "Winter 2024 - Spring 2025"
 draft: false
 thumbnail: "thumbs/renderer.png"
 video: "thumbs/rend_short.mp4"   # Optional
 description: "An ECS-Based OpenGL Renderer with Shadow Mapping written in C++"
+github: "https://github.com/jase-4/branch-renderer"
 weight: 3
 ---
 

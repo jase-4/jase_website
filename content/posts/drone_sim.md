@@ -1,10 +1,11 @@
 ---
 title: "Drone Sim"
-date: 2025-07-01
+season: "Spring - Summer 2025"
 draft: false
 thumbnail: "thumbs/drone_sim.png"
 video: "thumbs/drone_short.mp4" 
 description: "Drone simulation in C++ with Bullet physics and OpenGL rendering, integrating Ada/Python flight control and simulated sensor data."
+github: "https://github.com/jase-4/drone-sim"
 weight: 1
 ---
 

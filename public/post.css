@@ -21,6 +21,13 @@ body {
   min-height: 100vh; /* fill viewport height */
 }
 
+.project-season {
+  color: #669bbc;
+  font-size: 0.95rem;
+  font-style: italic;
+  margin: 0.5rem 0 1.5rem 0;
+  font-weight: 500;
+}
 
 
 /* ===== Main Container ===== */
@@ -89,6 +96,7 @@ body {
 .container p.back-link a:hover {
   background-color: #3b3860;
   color: #fffacd;
+  transform: translateY(-2px);
 }
 
 /* ===== Footer ===== */
@@ -145,6 +153,25 @@ body {
   transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
+
+.github-link {
+  display: inline-block;
+  padding: 8px 16px;
+  margin: 1rem 0;
+  background-color: #2a2835;
+  color: #fdf0d5;
+  
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.github-link:hover {
+  background-color: #3b3860;
+  color: #fffacd;
+  transform: translateY(-2px);
+}
 
 
 /* ===== Responsive Styles ===== */

@@ -1,11 +1,14 @@
 ---
 title: "Cuda Boid Sim"
-date: 2025-07-01
+season: "Spring - Summer 2025"
 draft: false
 thumbnail: "thumbs/cuda_boid.png"
 video: "thumbs/boid_short.mp4"   # Optional
 description: "Accelerating Boid Simulations with CUDA and C++, Rendered with OpenGL"
+github: "https://github.com/jase-4/boid-sim"
 ---
+
+
 
 ## Overview
 I built a real-time Boid flocking simulation accelerated with CUDA. The system simulates thousands of agents moving according to flocking rules (separation, alignment, cohesion) and renders them in real time using instanced OpenGL.
