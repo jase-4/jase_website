@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <title>Cuda Boid Sim</title>
+  <link rel="stylesheet" href="/post.css">
+</head>
+
+
+
+<body>
+ <nav class="side-button-group">
+      <a href="/" class="button-link">Home</a>
+       <a href="/posts/" class="button-link">Projects</a>
+    <a href="https://github.com/jase-4" target="_blank" class="button-link">GitHub</a>
+    <a href="/resume/" class="button-link">Resume</a>
+   
+  </nav>
+<div class="container">
+  <main>
+    <h1>Cuda Boid Sim</h1>
+    <p><em>Jul 1, 2025</em></p>
+    <article><h2 id="hook">Hook</h2>
+<p>I wanted to see how GPU programming changes the way you think about algorithms. A flocking sim (Boids) was the perfect test case.</p>
+<h2 id="background">Background</h2>
+<p>Boid simulations model flocking behavior using simple rules: alignment, cohesion, and separation. They’re a great way to explore parallelism because each boid can be updated independently.<br>
+<em>Insert GIF or screenshot of the Boid simulation here.</em></p>
+<h2 id="cpu-implementation">CPU Implementation</h2>
+<ul>
+<li>Traditional CPU approach: loops over each boid, updating positions and velocities.</li>
+<li>Structure-of-arrays vs naive array-of-structs approach.</li>
+<li>Limitations: performance drops with large numbers of boids.</li>
+</ul>
+<h2 id="cuda-implementation">CUDA Implementation</h2>
+<ul>
+<li>Programming style shift:
+<ul>
+<li>CPU: sequential loops, per-boid updates.</li>
+<li>CUDA: kernels, blocks, threads, parallel execution.</li>
+</ul>
+</li>
+<li>Focus on avoiding data races and optimizing memory layout.</li>
+<li>Tiny pseudocode contrast (optional).</li>
+</ul>
+<h2 id="results--visuals">Results &amp; Visuals</h2>
+<ul>
+<li>Side-by-side demo: CPU vs CUDA at different scales.</li>
+<li>Performance comparison:
+<ul>
+<li>CPU: ~30 FPS at 5k boids</li>
+<li>CUDA: ~60 FPS at 50k boids</li>
+</ul>
+</li>
+<li>Let the visuals do the talking.</li>
+</ul>
+<h2 id="reflections">Reflections</h2>
+<ul>
+<li>Lessons learned about GPU programming:
+<ul>
+<li>Parallelism mindset</li>
+<li>Debugging CUDA</li>
+<li>Importance of memory layout</li>
+</ul>
+</li>
+<li>How this fits into broader learning goals: resume-worthy CUDA experience, real-time simulation work.</li>
+</ul>
+</article>
+   <p class="back-link"><a href="/posts/">← Back to Projects</a></p>
+  </main>
+</div>
+
+     <footer class="footer">
+    <p>&copy; 2025 Jase Branch. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>

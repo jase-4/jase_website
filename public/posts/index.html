@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+   <link rel="icon" type="image/png" href="/thumbs/logo.png">
+  <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Posts</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+  
+
+
+
+  <nav class="side-button-group">
+     <a href="/" class="button-link">Home</a>
+     <a href="/posts/" class="button-link">Projects</a>
+    <a href="https://github.com/jase-4" target="_blank" class="button-link">GitHub</a>
+    <a href="/resume/" class="button-link">Resume</a>
+    
+  </nav>
+
+
+  
+  <div class="container">
+    <h1>Projects</h1>
+    <main class="masonry">
+      
+      <article class="card">
+  <a href="/posts/drone_sim/">
+    
+      <img src="/thumbs/drone_sim.png" alt="Drone Sim" class="card-img">
+      <video src="/thumbs/drone_short.mp4" muted loop playsinline class="card-video"></video>
+    
+   <div class="card-text">
+      <h2>Drone Sim</h2>
+      <p>
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        Drone simulation in <b>C++</b> with Bullet physics and <b>OpenGL</b> rendering, integrating <b>Ada</b>/Python flight control and simulated sensor data.
+      </p>
+</div>
+  </a>
+</article>
+      
+      <article class="card">
+  <a href="/posts/distrib_embed/">
+    
+      <img src="/thumbs/embed2.png" alt="Embedded Distributed Sensor Network" class="card-img">
+      <video src="/thumbs/embed3.mp4" muted loop playsinline class="card-video"></video>
+    
+   <div class="card-text">
+      <h2>Embedded Distributed Sensor Network</h2>
+      <p>
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        Distributed <b>CAN bus</b> network using <b>Rust</b> (<b>Embassy</b>) on ESP32 nodes and <b>C++</b> (<b>FreeRTOS</b>) on STM32
+      </p>
+</div>
+  </a>
+</article>
+      
+      <article class="card">
+  <a href="/posts/renderer/">
+    
+      <img src="/thumbs/renderer.png" alt="OpenGL Renderer" class="card-img">
+      <video src="/thumbs/rend_short.mp4" muted loop playsinline class="card-video"></video>
+    
+   <div class="card-text">
+      <h2>OpenGL Renderer</h2>
+      <p>
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        An ECS-Based <b>OpenGL</b> Renderer with Shadow Mapping written in <b>C++</b>
+      </p>
+</div>
+  </a>
+</article>
+      
+      <article class="card">
+  <a href="/posts/cuda_boid_sim/">
+    
+      <img src="/thumbs/cuda_boid.png" alt="Cuda Boid Sim" class="card-img">
+      <video src="/thumbs/boid_short.mp4" muted loop playsinline class="card-video"></video>
+    
+   <div class="card-text">
+      <h2>Cuda Boid Sim</h2>
+      <p>
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        Accelerating Boid Simulations with <b>CUDA</b> and <b>C++</b>, Rendered with <b>OpenGL</b>
+      </p>
+</div>
+  </a>
+</article>
+      
+    </main>
+  </div>
+
+  
+  <footer class="footer">
+     <p>&copy; 2025 Jase Branch. All rights reserved.</p>
+  </footer>
+
+
+
+</body>
+
+<script src="/nav-bar.js"></script>
+
+<script>
+document.querySelectorAll(".card").forEach(card => {
+  const video = card.querySelector("video");
+  if (!video) return; 
+
+  card.addEventListener("mouseenter", () => video.play());
+  card.addEventListener("mouseleave", () => {
+    video.pause();
+    video.currentTime = 0; 
+  });
+});
+</script>
+
+
+
+</html>

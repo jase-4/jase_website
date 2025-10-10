@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <title>Embedded Distributed Sensor Network</title>
+  <link rel="stylesheet" href="/post.css">
+</head>
+
+
+
+<body>
+ <nav class="side-button-group">
+      <a href="/" class="button-link">Home</a>
+       <a href="/posts/" class="button-link">Projects</a>
+    <a href="https://github.com/jase-4" target="_blank" class="button-link">GitHub</a>
+    <a href="/resume/" class="button-link">Resume</a>
+   
+  </nav>
+<div class="container">
+  <main>
+    <h1>Embedded Distributed Sensor Network</h1>
+    <p><em>Jul 1, 2025</em></p>
+    <article><h2 id="hook">Hook</h2>
+<p>I wanted to build more than just a single-board project — this is a distributed system with multiple microcontrollers working together. Two ESP32 nodes (Rust + Embassy), one STM32 node (C++ + FreeRTOS), and a Wi-Fi gateway all communicate over CAN bus to send sensor data to a remote server.</p>
+<h2 id="background">Background</h2>
+<ul>
+<li>Why build a distributed embedded system instead of “everything on one board”?</li>
+<li>Goals: modularity, real-time guarantees, and networking experience.</li>
+<li>Brief overview of hardware: ESP32 + STM32.</li>
+</ul>
+<h2 id="system-overview">System Overview</h2>
+<ul>
+<li>Diagram of nodes + connections:
+<ul>
+<li><strong>ESP32 Sensor Node (Rust/Embassy):</strong> gathers raw sensor data.</li>
+<li><strong>STM32 Fusion Node (C++/FreeRTOS):</strong> performs sensor fusion.</li>
+<li><strong>ESP32 Wi-Fi Node (Rust/Embassy):</strong> sends fused data over UDP/Wi-Fi.</li>
+<li><strong>Server:</strong> receives data and displays it.</li>
+</ul>
+</li>
+<li>CAN bus as the backbone for inter-node communication.</li>
+</ul>
+<h2 id="node-breakdown">Node Breakdown</h2>
+<h3 id="esp32-sensor-node">ESP32 Sensor Node</h3>
+<ul>
+<li>Runs Rust with Embassy async runtime.</li>
+<li>Interfaces with sensors (list which ones).</li>
+<li>Publishes data onto CAN bus.</li>
+</ul>
+<h3 id="stm32-fusion-node">STM32 Fusion Node</h3>
+<ul>
+<li>Runs FreeRTOS in C++.</li>
+<li>Receives sensor packets from CAN.</li>
+<li>Performs sensor fusion (filters, transformations).</li>
+<li>Sends fused data onward to Wi-Fi node.</li>
+</ul>
+<h3 id="esp32-wi-fi-node">ESP32 Wi-Fi Node</h3>
+<ul>
+<li>Rust + Embassy again.</li>
+<li>Bridges CAN data to UDP packets.</li>
+<li>Transmits data to remote server.</li>
+</ul>
+<h3 id="server">Server</h3>
+<ul>
+<li>Collects and displays sensor data.</li>
+<li>Could be extended for logging, visualization, or control.</li>
+</ul>
+<h2 id="challenges">Challenges</h2>
+<ul>
+<li>Coordinating three languages (Rust, C++, Ada-like concurrency model in FreeRTOS).</li>
+<li>CAN bus packet format + bandwidth constraints.</li>
+<li>Synchronization between nodes.</li>
+<li>Debugging async code on ESP32 with Embassy.</li>
+</ul>
+<h2 id="results--showcase">Results &amp; Showcase</h2>
+<ul>
+<li>Diagram of packet flow.</li>
+<li>Video/screenshots of live sensor data arriving at the server.</li>
+<li>Notes on latency and reliability.</li>
+</ul>
+<h2 id="reflections">Reflections</h2>
+<ul>
+<li>What worked well (async in Rust, modular design).</li>
+<li>What was hard (debugging CAN traffic, integration issues).</li>
+<li>How this ties into bigger goals (real distributed embedded systems, future robotics/IoT).</li>
+<li>Next steps: encryption, error correction, more nodes, or integration with the drone sim.</li>
+</ul>
+</article>
+   <p class="back-link"><a href="/posts/">← Back to Projects</a></p>
+  </main>
+</div>
+
+     <footer class="footer">
+    <p>&copy; 2025 Jase Branch. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>

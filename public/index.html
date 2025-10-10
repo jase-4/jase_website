@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta name="generator" content="Hugo 0.150.0"><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8" />
+
+
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
+
+   <link rel="icon" type="image/png" href="/thumbs/logo.png">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  
+  <title>Jase Branch</title>
+  <link rel="stylesheet" href="/style-home.css" />
+</head>
+<body class="home">
+
+  
+  <nav class="side-button-group">
+      <a href="/" class="button-link">Home</a>
+       <a href="/posts/" class="button-link">Projects</a>
+    <a href="https://github.com/jase-4" target="_blank" class="button-link">GitHub</a>
+    <a href="/resume/" class="button-link">Resume</a>
+   
+  </nav>
+
+  <main class="container">
+
+    
+    <div class="top-section">
+      
+      <section class="content-box about-contact-section">
+      <div class="left-column">
+        <img src="/thumbs/me2.jpg" alt="Jase Branch" class="profile-pic" />
+        <div class="contact-box">
+          <h2>Contact</h2>
+          <p>Email: <a href="mailto:jase_branch4@outlook.com">jase_branch4@outlook.com</a></p>
+           <p>LinkedIn: <a href="https://www.linkedin.com/in/jase-branch/">jase-branch</a></p>
+          <p>Based in: <b>Fort Worth, Texas</b></p>
+        </div>
+      </div>
+
+      <div class="about-contact-text">
+  <h1>Hey, I'm Jase</h1>
+  <p>I build <strong>embedded systems</strong>, <strong>real-time simulations</strong>, and <strong>graphics applications</strong>.<br><br>
+  I work primarily in <strong>C++</strong> with some <strong>Rust</strong> — focusing on systems programming, graphics programming, and parallel computing.<br><br>
+  Currently pursuing my <strong>MS in Computer Science</strong> at Oregon State and looking for opportunities in <strong>defense</strong>, <strong>embedded systems</strong>, and <strong>simulation engineering</strong>.</p>
+</div>
+    </section>
+
+
+      
+      <section class="content-box threejs-section">
+        <div id="three-canvas" style="height: 300px; width: 100%; ">
+         
+        </div>
+      </section>
+
+    </div>
+
+    <section class="project-section">
+  <h2 class="section-title">Featured Projects</h2>
+  <div class="masonry">
+
+    <a href="/posts/drone_sim/" class="card">
+      <div class="card-media">
+        <video class="card-video" src="/thumbs/drone_short.mp4" autoplay muted loop playsinline></video>
+        <img class="card-img" src="/thumbs/drone_sim.png" alt="Simulation Engine" />
+      </div>
+      <div class="card-text">
+        <h2>Drone Sim</h2>
+        <p>Drone simulation in C++ with Bullet physics and OpenGL rendering, integrating Ada/Python flight control and simulated sensor data</p>
+      </div>
+    </a>
+
+    <a href="/posts/distrib_embed/" class="card">
+      <div class="card-media">
+        <video class="card-video" src="/thumbs/embed3.mp4" autoplay muted loop playsinline></video>
+        <img class="card-img" src="/thumbs/embed2.png" alt="Rust Telemetry" />
+      </div>
+      <div class="card-text">
+        <h2>Embedded Distributed Sensor Network</h2>
+        <p>Distributed CAN bus network using Rust (Embassy) on ESP32 nodes and C++ (FreeRTOS) on STM32</p>
+      </div>
+    </a>
+
+    <a href="/posts/renderer/" class="card">
+      <div class="card-media">
+        <video class="card-video" src="/thumbs/rend_short.mp4" autoplay muted loop playsinline></video>
+        <img class="card-img" src="/thumbs/renderer.png" alt="CUDA Boid Swarms" />
+      </div>
+      <div class="card-text">
+        <h2>OpenGL Renderer</h2>
+        <p>An ECS-Based OpenGL Renderer with Shadow Mapping written in C++</p>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2025 Jase Branch. All rights reserved.</p>
+  </footer>
+
+
+<script type="module" src="/three-sphere.js"></script>
+<script src="/nav-bar.js"></script>
+</body>
+</html>

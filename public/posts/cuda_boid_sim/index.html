@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <title>Cuda Boid Sim</title>
+
+   <link rel="icon" type="image/png" href="/thumbs/logo.png">
+
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/post.css">
+</head>
+
+
+
+<body>
+ <nav class="side-button-group">
+      <a href="/" class="button-link">Home</a>
+       <a href="/posts/" class="button-link">Projects</a>
+    <a href="https://github.com/jase-4" target="_blank" class="button-link">GitHub</a>
+    <a href="/resume/" class="button-link">Resume</a>
+   
+  </nav>
+<div class="container">
+  <main>
+    <h1>Cuda Boid Sim</h1>
+    <p><em>Jul 1, 2025</em></p>
+    <article><h2 id="overview">Overview</h2>
+<p>I built a real-time Boid flocking simulation accelerated with CUDA. The system simulates thousands of agents moving according to flocking rules (separation, alignment, cohesion) and renders them in real time using instanced OpenGL.</p>
+<h2 id="motivation">Motivation</h2>
+<p>I wanted to explore GPU computing and parallelization in practice, so I chose CUDA since I&rsquo;m running on an NVIDIA GPU (and, well, they don&rsquo;t exactly give you much of a choice). The Boid algorithm is simple at its core, but once you add hundreds of agents that all need to be rendered, performance becomes a real challenge. I also liked the way other boid projects looked, except most of the ones I saw were in 2D and not 3D, so I made it 3D.</p>
+<p>Because of how straightforward the algorithm was, state between each CUDA run was minimal, making it a great candidate for showcasing performance scaling with CUDA.</p>
+<h2 id="technical-highlights">Technical Highlights</h2>
+<ul>
+<li><strong>CUDA Parallelization</strong> – Offloaded flocking rule computations to thousands of GPU threads for massive speedups over the CPU version.</li>
+<li><strong>CPU Baseline</strong> – Implemented a single-threaded CPU version for direct performance comparison.</li>
+<li><strong>Instanced Rendering</strong> – Used OpenGL instanced rendering to efficiently draw thousands of Boids in real time.</li>
+<li><strong>Performance Benchmarking</strong> – Measured simulation scaling with population size, optimizing memory layouts (Structure of Arrays) for coalesced GPU access.</li>
+</ul>
+<h2 id="performance-results">Performance Results</h2>
+<p>The CUDA implementation achieved dramatic performance improvements over the single-threaded CPU baseline:</p>
+<ul>
+<li><strong>At 60 FPS:</strong> 16,000 boids (CUDA) vs 450 boids (CPU) — <strong>35.6× improvement</strong></li>
+<li><strong>At 45 FPS:</strong> 20,000 boids (CUDA) vs 600 boids (CPU) — <strong>33.3× improvement</strong></li>
+<li><strong>At 30 FPS:</strong> 28,000 boids (CUDA) vs 700 boids (CPU) — <strong>40× improvement</strong></li>
+</ul>
+<p>The CUDA version consistently maintained 35-40× higher agent counts at equivalent frame rates, demonstrating the massive parallelization benefits for embarrassingly parallel workloads.</p>
+<video autoplay loop muted playsinline width="100%" style="border-radius: 12px; overflow: hidden;">
+  <source src="/thumbs/cuda_sim.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+<video autoplay loop muted playsinline width="100%" style="border-radius: 12px; overflow: hidden;">
+  <source src="/thumbs/cpu_sim.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+<h2 id="reflection">Reflection</h2>
+<p>This project was one of my shorter ones, and while I&rsquo;m happy with the results, I&rsquo;m not entirely satisfied with the architecture. Switching between the GPU and CPU versions feels awkward and hacky. That happened because I started with the CPU version and tried to follow the paper&rsquo;s implementation as closely as I could. I also tied the random initialization of each Boid to a class that ended up being required everywhere. I probably could&rsquo;ve refactored that out, but it would&rsquo;ve been a lot of work for something that already works and that I don&rsquo;t plan to revisit.</p>
+<p>The CUDA version&rsquo;s logic is mostly the same, just parallelized. The main issue I ran into was with the CUDA compiler — it didn&rsquo;t like me using a simple wrapper class for 3D vectors even though it had no polymorphic behavior. I also had to enable a setting that allowed linking across multiple CUDA files. I&rsquo;m guessing most people just use one large CUDA file, but I structured the project like I would a typical C++ codebase.</p>
+<p>Visually, I&rsquo;m really happy with how it turned out. Watching the Boids interact almost feels like a lava lamp with the setup I have. I definitely learned a lot about GPU programming and parallelization throughout this project. That said, I probably wouldn&rsquo;t use CUDA again unless I was being paid to — it&rsquo;s powerful, but not the most enjoyable tool to work with.</p>
+<p>There&rsquo;s still plenty of room for optimization: using tetrahedrons instead of cubes, improving loading and initialization (though it only runs once), and maybe adding lighting. It could also be cool to have each Boid rotate in the direction of its velocity. Overall, I&rsquo;m happy with the visuals and ready to move on to something new.</p>
+<h2 id="whats-next">What&rsquo;s Next?</h2>
+<p>For CUDA itself — probably nothing. I don&rsquo;t plan to continue this project. But for GPU programming in general, definitely. Graphics programming is already a kind of GPU work, but for compute tasks, I&rsquo;d like to try out <strong>OpenCL</strong> next, especially for cross-vendor compatibility in gaming scenarios where I wouldn&rsquo;t want to write both CUDA and whatever AMD uses.</p>
+</article>
+   <p class="back-link"><a href="/posts/">← Back to Projects</a></p>
+  </main>
+</div>
+
+     <footer class="footer">
+    <p>&copy; 2025 Jase Branch. All rights reserved.</p>
+  </footer>
+
+</body>
+
+<script src="/nav-bar.js"></script>
+</html>

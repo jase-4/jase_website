@@ -1,0 +1,434 @@
+/* ===== Global Reset ===== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  
+}
+
+
+
+/* 
+.page-wrapper {
+  max-width: 95vw;
+  min-height: 95vh;
+  margin: 2vh auto;
+  padding: 2rem;
+  border: 2px solid #444;
+  border-radius: 16px;
+  box-shadow: 0 0 16px rgba(0, 0, 0, 0.2);
+  background-color: #fffaf0;
+  box-sizing: border-box;
+  position: relative; /* for absolute children */
+/* }  */
+
+
+html, body {
+  height: 100%;
+  font-family: sans-serif;
+  background-color: #fdf0d5;
+  color: #222;
+}
+
+
+
+/* ===== Page Layout ===== */
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+
+
+main.container {
+  flex: 1;
+
+  font-family:  monospace;
+
+  max-width: 1200px;
+  margin: 0 auto;
+  margin-top: 4.5rem; /* offset for fixed navbar */
+  padding: 2rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.45);
+   border-radius: 8px;
+   margin-bottom: 2.5rem; /* offset for fixed navbar */
+}
+
+/* ===== Left-Side Floating Button Group ===== */
+.side-button-group {
+  position: fixed;
+  top: 0.20rem;
+  left: 0.20rem;
+  display: flex;
+  flex-direction: row;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  background-color: #2a2835;            /* match your content-box */
+  border-radius: 12px;                  /* cleaner round */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.45);
+  border: 1px solid #444;               /* subtle border like cards */
+  z-index: 1000;
+}
+
+.side-button-group {
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.side-button-group.hide {
+  transform: translateY(-150%); /* Push it further up */
+  opacity: 0; /* Also fade it out */
+  pointer-events: none; /* Disable clicks when hidden */
+}
+
+/* ===== Buttons Inside the Box ===== */
+.side-button-group .button-link {
+  background-color: #003049;
+  color: #fdf0d5;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;                   /* subtle curve, not pill */
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  transition: background-color 0.2s ease, transform 0.15s ease;
+  border: 1px solid #8ecae6;
+  box-shadow: inset 0 0 0 transparent;
+}
+
+.side-button-group .button-link:hover {
+  background-color: #005b8f;
+  transform: translateY(-1px);
+  box-shadow: inset 0 0 0 1px #0077cc;
+}
+
+/* ===== Content Box Style ===== */
+.content-box {
+  background-color: #2a2835;
+  color: #669bbc;
+  border-radius: 16px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.45);
+}
+
+/* ===== Top Section: About + Contact on left, Three.js on right ===== */
+.top-section {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 0rem;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+/* About + Contact combined section */
+/* Left side: about + contact takes 75% */
+.about-contact-section {
+  flex: 0 1 70%;
+  min-width: 0px; /* so it doesn't shrink too small */
+  display: flex;
+  gap: 2rem;
+  color: #669bbc;
+  align-items: flex-start;
+}
+
+.about-contact-section strong {
+  color:  #8ecae6;
+}
+
+/* Left column: Profile pic on top, Contact below */
+.left-column {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  min-width:250px;
+}
+
+/* Profile picture */
+.profile-pic {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #8ecae6;
+}
+
+/* Contact box styling */
+.contact-box {
+  background-color: transparent;
+ 
+  color: #8ecae6;
+  width: 130%; /* fill max-width of column */
+}
+
+.contact-box h2 {
+  margin-bottom: 0.75rem;
+  font-size: 1.4rem;
+  color: #8ecae6;
+ 
+}
+
+.contact-box p {
+  margin: 0.4rem 0;
+  font-size: 1rem;
+  color: #ddd;
+}
+
+.contact-box b {
+  color: #fdf0d5;
+}
+
+.contact-box a {
+  color: #fdf0d5;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+
+.contact-box a:hover {
+  border-bottom: 1px solid #fdf0d5;
+}
+/* About text */
+.about-contact-text {
+  flex: 1 1 auto;
+  min-width: 280px;
+}
+
+.about-contact-text h1 {
+  font-size: 2rem;
+  color: #00ffcc;
+  margin-bottom: 0.5rem;
+}
+
+.about-contact-text p {
+  font-size: 1.1rem;
+  color: #ccc;
+}
+
+.threejs-section {
+  flex: 0 0 25%;
+  min-width: 0;
+  background-color: #2a2835;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+ 
+  min-height: 300px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #888;
+
+  /* Add these for full coverage */
+  position: relative;  /* allow absolute children */
+    /* clip overflowing parts */
+}
+
+/* #three-canvas {
+  width: 100%;
+  height: 100%;
+  border-radius: 12px; /* match container's round corners */
+  /* display: block;      remove inline-block gaps */
+/* }  */
+
+
+/* ===== Project Masonry ===== */
+.project-section {
+  
+}
+
+/* .section-title {
+  font-size: 1.6rem;
+  color: #39a0d3;
+  margin-bottom: 1rem;
+} */
+
+
+.section-title {
+  display: inline-block;
+  background-color: #2a2835; /* match your content-box background */
+  color: #fdf0d5;
+  padding: 0.6rem 1.2rem;
+  border-radius: 12px;       /* less round than a pill */
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.25);
+  border: 1px solid #444;    /* optional: match box/card border */
+}
+
+.masonry {
+  column-count: 3;
+  column-gap: 1rem;
+}
+
+/* .masonry {
+  max-width: 100%;
+  overflow-wrap: break-word;
+} */
+
+@media (max-width: 1000px) {
+  .masonry {
+    column-count: 2;
+  }
+}
+
+@media (max-width: 600px) {
+  .masonry {
+    column-count: 1;
+  }
+
+  .top-section {
+    flex-direction: column;
+  }
+
+  .about-contact-section {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .left-column {
+    align-items: center;
+  }
+
+  .profile-pic {
+    margin-bottom: 1rem;
+  }
+
+  .about-contact-text {
+    min-width: auto;
+  }
+}
+
+/* ===== Project Card ===== */
+.card {
+  position: relative; /* required for absolute video */
+  display: block;
+  break-inside: avoid;
+  background: #2a2835;
+  color: #fdf0d5;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  overflow: hidden;
+  text-decoration: none;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card-img,
+.card-video {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  display: block;
+}
+
+.card-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  z-index: 2;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.card:hover .card-video {
+  opacity: 1;
+}
+
+
+/* ===== Card Text ===== */
+.card-text {
+  padding: 1rem;
+}
+
+.card-text h2 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: #fdf0d5;
+}
+
+.card-text p {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: #669bbc;
+  line-height: 1.4;
+}
+
+/* ===== Responsive Columns ===== */
+.masonry {
+  column-count: 3;
+  column-gap: 1rem;
+}
+
+@media (max-width: 1000px) {
+  .masonry {
+    column-count: 2;
+  }
+}
+
+@media (max-width: 600px) {
+  .masonry {
+    column-count: 1;
+  }
+}
+
+
+/* ===== Footer ===== */
+.footer {
+  background-color: #2a2835;
+  color: #669bbc;
+  text-align: left;
+  padding: 1rem 2rem;
+  font-size: 0.9rem;
+}
+
+
+@media (max-width: 800px) {
+  .top-section {
+    flex-direction: column;
+  }
+
+  .about-contact-section {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .about-contact-text {
+    width: 100%;
+    padding: 0 1rem;
+  }
+
+  .left-column {
+    align-items: center;
+    text-align: center;
+  }
+
+  .profile-pic {
+    margin-bottom: 1rem;
+  }
+}
+@media (max-width: 600px) {
+  .threejs-section {
+    flex: 1 1 100%;
+    min-width: auto;
+    max-width: 100%;
+    width: 100%;
+    min-height: 300px;
+    margin-top: 1rem;
+  }
+}
+@media (max-width: 600px) {
+  .threejs-section {
+    flex: none !important;      /* Remove flex-grow/shrink/basis */
+    width: 100% !important;     /* Full width */
+    min-width: auto !important; /* Remove any min-width */
+    min-height: 300px !important;
+    max-width: 100% !important;
+    margin-top: 1rem !important;
+  }
+}
+

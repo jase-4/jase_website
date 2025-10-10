@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <title>Drone Sim</title>
+
+   <link rel="icon" type="image/png" href="/thumbs/logo.png">
+
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/post.css">
+</head>
+
+
+
+<body>
+ <nav class="side-button-group">
+      <a href="/" class="button-link">Home</a>
+       <a href="/posts/" class="button-link">Projects</a>
+    <a href="https://github.com/jase-4" target="_blank" class="button-link">GitHub</a>
+    <a href="/resume/" class="button-link">Resume</a>
+   
+  </nav>
+<div class="container">
+  <main>
+    <h1>Drone Sim</h1>
+    <p><em>Jul 1, 2025</em></p>
+    <article><h2 id="overview">Overview</h2>
+<p>I built a real-time drone simulator that brings together physics, graphics, and networking. The simulator uses Bullet Physics, OpenGL, Boost.Asio, and C++ to model realistic drone dynamic. A virtual flight controller, written in Python for rapid prototyping and Ada for reliability, that connects via UDP to command the drone. The system also emulates onboard sensors, making it possible to test control logic in a realistic environment.</p>
+<h2 id="motivation">Motivation</h2>
+<p>I wanted to know more about drones and physics simulation as a whole. Every so often I get a urge to explore physics and since I had just built my own renderer, it felt like the perfect opportunity to turn it into a custom drone sim. This project also gave me a deeper understanding of how to structure systems and how the visual and backend sides of simulations interact.</p>
+<h2 id="technical-highlights">Technical Highlights</h2>
+<ul>
+<li>Drone Dynamics &amp; Collisions – Simulated realistic rigid-body physics using Bullet.</li>
+<li>OpenGL Visualization – Rendered the drone and environment in real time.</li>
+<li>Ada Flight Controller – Wrote a virtual flight controller in Ada, communicating over UDP sockets.</li>
+<li>Sensor Emulation – Implemented IMU, GPS and others using Boost.Asio for asynchronous networking.</li>
+<li>Unified Pipeline – Designed the simulator so that physics, sensors, and control logic run together as a cohesive system.</li>
+</ul>
+<video autoplay loop muted playsinline width="100%" style="border-radius: 12px; overflow: hidden;">
+  <source src="/thumbs/drone_py.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+<video autoplay loop muted playsinline width="100%" style="border-radius: 12px; overflow: hidden;">
+  <source src="/thumbs/drone_ada.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+<h2 id="reflection">Reflection</h2>
+<p>This is probably my favorite project I’ve done so far. I really enjoyed learning more about <strong>physics and drones</strong>. Speaking of physics, I actually tried to write my own <strong>physics engine</strong> at first. Unfortunately, that didn’t work out — I couldn’t get rotational collisions to behave correctly, and objects kept sinking into the floor. Honestly though, switching to <strong>Bullet Physics</strong> was probably for the best. Once I made the switch, everything came together quickly, and the time I spent trying to build my own engine helped me understand Bullet much better.</p>
+<p>I used <strong>Boost.Asio</strong> for sensor emulation to simulate how a real drone operates. I chose it because it’s deterministic — similar to how <strong>FreeRTOS</strong> schedules tasks — which made the simulation more reproducible than using regular threads. Later, when I worked on my embedded project using FreeRTOS, I realized how similar the design concepts were.</p>
+<p>I decided to write the <strong>flight controller and PID system</strong> separately because I wanted to experiment with the <strong>Ada programming language</strong>. I’d read that it was originally developed by the U.S. Department of Defense and wanted to see how its safety model compared to Rust’s. Ada turned out to be a very verbose language — definitely challenging to read at first since it’s so different from C-style syntax. It reminded me of learning a new spoken language during those first few confusing weeks. It has its ups and downs, but the biggest downside is the ecosystem and documentation, likely due to its proprietary history.</p>
+<p>As for challenges, most of them were around <strong>organization and stability</strong>. Getting the PID controller to work required a lot of tuning. The biggest issue I found was instability in the simulation itself — getting the error approximations right and adjusting the physics timestep took time. I also wanted to go further with the <strong>sensors</strong> by adding sensor fusion and extra components like a range finder, but at some point, I had to ask: <em>have I learned what I wanted to from this project?</em></p>
+<p>I’d say yes — I came away with a solid understanding of the underlying systems behind drones, simulations, and control loops.</p>
+<h2 id="whats-next">What&rsquo;s Next?</h2>
+<p>As I mentioned, this project is something I could keep expanding forever. That said, I think I’d have a better time exploring new ideas using a <strong>pre-built simulator</strong> rather than starting from scratch again.</p>
+<p>More likely, I’ll experiment with <strong>Unreal Engine 5</strong>, possibly using a flight simulator plugin and <strong>ROS</strong> to explore concepts like drone swarms or computer vision applications and turning that into another project. Eventually, I’d love to build my <strong>own physical drone</strong>, but that will probably require a 3D printer so I can create custom parts. My plan would be to handle everything for it — including designing a <strong>custom PCB</strong> — which I think would be incredibly fun and rewarding.</p>
+</article>
+   <p class="back-link"><a href="/posts/">← Back to Projects</a></p>
+  </main>
+</div>
+
+     <footer class="footer">
+    <p>&copy; 2025 Jase Branch. All rights reserved.</p>
+  </footer>
+
+</body>
+
+<script src="/nav-bar.js"></script>
+</html>

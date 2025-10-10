@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <link rel="icon" type="image/png" href="/thumbs/logo.png">
+  <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{{ .Title }}</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+  <!-- Full-width navbar -->
+
+
+
+  <nav class="side-button-group">
+     <a href="/" class="button-link">Home</a>
+     <a href="/posts/" class="button-link">Projects</a>
+    <a href="https://github.com/jase-4" target="_blank" class="button-link">GitHub</a>
+    <a href="/resume/" class="button-link">Resume</a>
+    
+  </nav>
+
+
+  <!-- Content container (max-width centered) -->
+  <div class="container">
+    <h1>Projects</h1>
+    <main class="masonry">
+      {{ range .Pages }}
+      <article class="card">
+  <a href="{{ .RelPermalink }}">
+    {{ if .Params.video }}
+      <img src="/{{ .Params.thumbnail }}" alt="{{ .Title }}" class="card-img">
+      <video src="/{{ .Params.video }}" muted loop playsinline class="card-video"></video>
+    {{ else }}
+      <img src="/{{ .Params.thumbnail }}" alt="{{ .Title }}" class="card-img">
+    {{ end }}
+   <div class="card-text">
+      <h2>{{ .Title }}</h2>
+      <p>
+        {{ $description := .Params.description }}
+        {{ $keywords := slice "CUDA" "CAN bus" "Ada" "Embassy" "FreeRTOS" "OpenGL" "C++" "Rust" }}
+        {{ range $keywords }}
+          {{ $description = replace $description . (printf "<b>%s</b>" .) -1 }}
+        {{ end }}
+        {{ $description | safeHTML }}
+      </p>
+</div>
+  </a>
+</article>
+      {{ end }}
+    </main>
+  </div>
+
+  <!-- Full-width footer -->
+  <footer class="footer">
+     <p>&copy; 2025 Jase Branch. All rights reserved.</p>
+  </footer>
+
+
+
+</body>
+
+<script src="/nav-bar.js"></script>
+
+<script>
+document.querySelectorAll(".card").forEach(card => {
+  const video = card.querySelector("video");
+  if (!video) return; // skip cards without video
+
+  card.addEventListener("mouseenter", () => video.play());
+  card.addEventListener("mouseleave", () => {
+    video.pause();
+    video.currentTime = 0; // reset to start
+  });
+});
+</script>
+
+
+
+</html>

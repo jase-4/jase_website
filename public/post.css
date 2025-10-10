@@ -1,0 +1,199 @@
+/* ===== Global Styles ===== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box; /* include padding/border in width calculations */
+}
+
+html, body {
+  font-family: "Arimo";
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  
+  background-color: #fdf0d5;
+}
+
+/* ===== Flex Layout for Sticky Footer ===== */
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* fill viewport height */
+}
+
+
+
+/* ===== Main Container ===== */
+.container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  max-width: 1200px;
+  width: 95%;
+  margin: 4.5rem auto 2.5rem auto; /* offset for navbar + footer */
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.45);
+}
+
+.container h1 {
+  margin: 0.1rem auto 0.5rem auto;
+  font-size: clamp(1.8rem, 5vw, 2.5rem);
+  font-weight: 700;
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  background-color: #2a2835;
+  color: #fdf0d5;
+  text-align: center;
+}
+
+.container h2 {
+  margin: 0.2rem auto 0.4rem auto;
+  font-size: clamp(1.2rem, 4vw, 1.8rem);
+  font-weight: 600;
+  display: inline-block;
+  padding: 0.4rem 0.8rem;
+  border-radius: 8px;
+  background-color: #003049;
+  
+  border: 2px solid #8ecae6;  /* add width, style, and color in one line */
+
+  color:  #fdf0d5;
+  text-align: center;
+}
+
+
+.container p,
+.container li {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  line-height: 1.6;
+  font-size: 1.125rem;  /* slightly bigger than default 16px */
+  
+}
+
+/* ===== Back Link Button ===== */
+.container p.back-link a {
+  display: inline-block;
+  margin: 0.5rem 0;
+  padding: 0.4rem 0.8rem;
+  border-radius: 8px;
+  background-color: #2a2835;
+  color: #fdf0d5;
+  text-decoration: none;
+  font-weight: 700;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.container p.back-link a:hover {
+  background-color: #3b3860;
+  color: #fffacd;
+}
+
+/* ===== Footer ===== */
+.footer {
+  background-color: #2a2835;
+  color: #fdf0d5;
+  text-align: left;
+  padding: 1rem 2rem;
+  font-size: 0.9rem;
+}
+
+.side-button-group {
+  position: fixed;
+  top: 0.20rem;
+  left: 0.20rem;
+  display: flex;
+  flex-direction: row;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  background-color: #2a2835;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.45);
+  border: 1px solid #444;
+  z-index: 1000;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.side-button-group.hide {
+  transform: translateY(-200%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.side-button-group .button-link {
+  background-color: #003049;
+  color: #fdf0d5;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  transition: background-color 0.2s ease, transform 0.15s ease;
+  border: 1px solid #8ecae6;
+}
+
+.side-button-group .button-link:hover {
+  background-color: #005b8f;
+  transform: translateY(-1px);
+  box-shadow: inset 0 0 0 1px #0077cc;
+}
+
+.side-button-group {
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+
+
+/* ===== Responsive Styles ===== */
+@media (max-width: 1024px) {
+  .container {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    margin: 3rem auto 2rem auto;
+    padding: 1rem;
+  }
+
+  .container h1 {
+    font-size: clamp(1.5rem, 6vw, 2rem);
+    padding: 0.3rem 0.6rem;
+  }
+
+  
+
+  .side-button-group {
+    flex-direction: row;
+    gap: 0.5rem;
+    top: 0.5rem;
+    left: 0.5rem;
+    padding: 0.5rem 0.75rem;
+  }
+
+  .side-button-group .button-link {
+    font-size: 0.8rem;
+    padding: 0.4rem 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0.75rem;
+    margin-top: 2.5rem;
+  }
+
+  .container h1 {
+    font-size: clamp(1.2rem, 7vw, 1.8rem);
+    padding: 0.25rem 0.5rem;
+  }
+
+  .footer {
+    padding: 1rem;
+    font-size: 0.85rem;
+  }
+}

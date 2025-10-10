@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <title>OpenGL Renderer</title>
+
+   <link rel="icon" type="image/png" href="/thumbs/logo.png">
+
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/post.css">
+</head>
+
+
+
+<body>
+ <nav class="side-button-group">
+      <a href="/" class="button-link">Home</a>
+       <a href="/posts/" class="button-link">Projects</a>
+    <a href="https://github.com/jase-4" target="_blank" class="button-link">GitHub</a>
+    <a href="/resume/" class="button-link">Resume</a>
+   
+  </nav>
+<div class="container">
+  <main>
+    <h1>OpenGL Renderer</h1>
+    <p><em>Jul 1, 2025</em></p>
+    <article><h2 id="overview">Overview</h2>
+<p>I built a real-time 3D renderer from scratch using OpenGL and C++. The renderer supports dynamic lighting and shadow mapping, and uses an architecture that combines an Entity-Component-System (ECS) with interface-based polymorphism.</p>
+<h2 id="motivation">Motivation</h2>
+<p>I was thinking about areas of computer science I hadn’t explored yet. Surprising even though I play video games, I hadn’t really explored graphics or game development that much. I decided to write a renderer from scratch in order to really understand the graphics pipeline. Along the way, I also developed a deeper understanding of linear algebra and how to structure complex systems.</p>
+<h2 id="technical-highlights">Technical Highlights</h2>
+<ul>
+<li><strong>Blinn-Phong Lighting</strong> – Implemented per-fragment lighting with diffuse, specular, and ambient components.</li>
+<li><strong>Shadow Mapping</strong> – Created depth-based shadow maps with adjustable bias to avoid artifacts.</li>
+<li><strong>Entity-Component-System (ECS)</strong> – Designed a lightweight ECS for flexible scene and object management.</li>
+<li><strong>Shader Pipeline</strong> – Wrote GLSL vertex and fragment shaders for materials, lighting, and depth passes.</li>
+</ul>
+<h2 id="architecture">Architecture</h2>
+<p>I ended up going with an <strong>ECS system</strong> mainly out of curiosity, though it also provides performance benefits by exploiting memory locality. I didn’t take a purist stance — sometimes I kept related items together in structs rather than splitting them into separate components, and I used interfaces where it made sense, such as for lights.</p>
+<p>I also used <strong>singletons</strong> to make resource management easier. Graphics and game development often lend themselves well to a global singleton pattern. I did consider adding <strong>thread pools</strong> for some resource management tasks, like loading OBJ files or managing shaders, to further improve performance.</p>
+<p>Overall, I’m very happy with how I designed the system. It allowed me to experiment with architecture decisions while keeping the renderer flexible and efficient.</p>
+<h3 id="ecs-and-systems">ECS and Systems</h3>
+<ul>
+<li>Entities store data as components; systems operate on the data to drive behavior and rendering.</li>
+<li>This separation keeps logic modular and allows adding new systems without changing existing ones.</li>
+</ul>
+<h3 id="interfaces">Interfaces</h3>
+<ul>
+<li>Common features, like lights, implement <strong>shared interfaces</strong>.</li>
+<li>Example: all light types (directional, point, spot) conform to a <code>Light</code> interface, letting the lighting system handle them uniformly.</li>
+</ul>
+<h3 id="singleton-subsystems">Singleton Subsystems</h3>
+<ul>
+<li>Key managers (e.g., <code>ShaderManager</code>) are <strong>singletons</strong>: created once at startup and accessed globally.</li>
+<li>Any system can register shaders or retrieve them without duplicating state, keeping resource management simple.</li>
+</ul>
+<h3 id="modularity-and-flexibility">Modularity and Flexibility</h3>
+<ul>
+<li>Renderer and other subsystems operate on ECS data through defined interfaces.</li>
+<li>This structure allows swapping or extending systems with minimal changes to the core engine.</li>
+</ul>
+<h3 id="lighting-system">Lighting System</h3>
+<ul>
+<li><strong>Directional lights</strong>: sunlight-style, global effect.</li>
+<li><strong>Point lights</strong>: omni-directional, limited radius.</li>
+<li><strong>Spot lights</strong>: cone-shaped, useful for focused beams.</li>
+<li>Unified interface: each light type as a component, managed by the lighting system.</li>
+</ul>
+<h3 id="shadow-mapping">Shadow Mapping</h3>
+<ul>
+<li><strong>Directional light shadows</strong>: orthographic depth maps.</li>
+<li><strong>Point light shadows</strong>: cubemap depth maps.</li>
+<li><strong>Spot light shadows</strong>: perspective depth maps.</li>
+<li>Challenges included biasing, resolution limits, and performance trade-offs.</li>
+</ul>
+<h2 id="visuals">Visuals</h2>
+<p><video autoplay loop muted playsinline width="100%"  style="border-radius: 12px; overflow: hidden;">&gt;
+<source src="/thumbs/renderer.mp4" type="video/mp4">
+Your browser does not support the video tag.
+</video></p>
+<h2 id="reflections">Reflections</h2>
+<p>This project was a big learning experience. One of the initial challenges was wrapping my head around how graphics are done, especially at the scale they are used in real-time rendering. In graphics, there are many areas where you just have to try something, see how it works, and learn the tricks along the way. For instance, using cameras freely and thinking of pixels as data like in shadow mapping can be non-obvious if you haven’t done graphics before.</p>
+<p>Learning shaders was also a lot of fun, though debugging them could be frustrating. Error messages are often vague, and sometimes things would just appear completely black, which was confusing at first. I know I still have a lot of work to do to become truly proficient with shaders.</p>
+<p>When it came to architecting the systems, it was all about deciding what belongs where and keeping the system as simple as possible. At one point, I considered adding a base class for lights on top of the interface, but I decided against it to avoid over-complicating the system unnecessarily.</p>
+<p>A project like this can go on forever, trying to improve or add features. Full game engines are massive, and throughout this project I found myself wondering whether I wanted to build a game or a game engine. There’s probably a happy middle ground, depending on the type of game you want to make.</p>
+<h2 id="whats-next">What&rsquo;s Next?</h2>
+<p>I actually built off of this project to create my <strong>Drone Sim</strong> project. In the future, I might add more features here, but I’m more likely to explore a game engine next and try making a small game. I might also experiment with <strong>Vulkan</strong> to deepen my graphics knowledge.</p>
+</article>
+   <p class="back-link"><a href="/posts/">← Back to Projects</a></p>
+  </main>
+</div>
+
+     <footer class="footer">
+    <p>&copy; 2025 Jase Branch. All rights reserved.</p>
+  </footer>
+
+</body>
+
+<script src="/nav-bar.js"></script>
+</html>
