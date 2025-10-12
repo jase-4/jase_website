@@ -13,10 +13,14 @@ github: "https://github.com/jase-4/boid-sim"
 ## Overview
 I built a real-time Boid flocking simulation accelerated with CUDA. The system simulates thousands of agents moving according to flocking rules (separation, alignment, cohesion) and renders them in real time using instanced OpenGL.
 
+---
+
 ## Motivation
 I wanted to explore GPU computing and parallelization in practice, so I chose CUDA since I'm running on an NVIDIA GPU (and, well, they don't exactly give you much of a choice). The Boid algorithm is simple at its core, but once you add hundreds of agents that all need to be rendered, performance becomes a real challenge. I also liked the way other boid projects looked, except most of the ones I saw were in 2D and not 3D, so I made it 3D.
 
 Because of how straightforward the algorithm was, state between each CUDA run was minimal, making it a great candidate for showcasing performance scaling with CUDA.
+
+---
 
 ## Technical Highlights
 
@@ -24,6 +28,8 @@ Because of how straightforward the algorithm was, state between each CUDA run wa
 - **CPU Baseline** – Implemented a single-threaded CPU version for direct performance comparison.  
 - **Instanced Rendering** – Used OpenGL instanced rendering to efficiently draw thousands of Boids in real time.  
 - **Performance Benchmarking** – Measured simulation scaling with population size, optimizing memory layouts (Structure of Arrays) for coalesced GPU access.
+
+---
 
 ## Performance Results
 
@@ -35,15 +41,23 @@ The CUDA implementation achieved dramatic performance improvements over the sing
 
 The CUDA version consistently maintained 35-40× higher agent counts at equivalent frame rates, demonstrating the massive parallelization benefits for embarrassingly parallel workloads.
 
+---
+
+## Demos
+
+### GPU
 <video autoplay loop muted playsinline width="100%" style="border-radius: 12px; overflow: hidden;">
   <source src="/thumbs/cuda_sim.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
 
+### CPU
 <video autoplay loop muted playsinline width="100%" style="border-radius: 12px; overflow: hidden;">
   <source src="/thumbs/cpu_sim.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
+
+---
 
 ## Reflection
 
@@ -54,6 +68,8 @@ The CUDA version's logic is mostly the same, just parallelized. The main issue I
 Visually, I'm really happy with how it turned out. Watching the Boids interact almost feels like a lava lamp with the setup I have. I definitely learned a lot about GPU programming and parallelization throughout this project. That said, I probably wouldn't use CUDA again unless I was being paid to — it's powerful, but not the most enjoyable tool to work with.  
 
 There's still plenty of room for optimization: using tetrahedrons instead of cubes, improving loading and initialization (though it only runs once), and maybe adding lighting. It could also be cool to have each Boid rotate in the direction of its velocity. Overall, I'm happy with the visuals and ready to move on to something new.
+
+---
 
 ## What's Next?
 

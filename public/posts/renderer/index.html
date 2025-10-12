@@ -35,8 +35,10 @@
   
     <article><h2 id="overview">Overview</h2>
 <p>I built a real-time 3D renderer from scratch using OpenGL and C++. The renderer supports dynamic lighting and shadow mapping, and uses an architecture that combines an Entity-Component-System (ECS) with interface-based polymorphism.</p>
+<hr>
 <h2 id="motivation">Motivation</h2>
 <p>I was thinking about areas of computer science I hadn’t explored yet. Surprising even though I play video games, I hadn’t really explored graphics or game development that much. I decided to write a renderer from scratch in order to really understand the graphics pipeline. Along the way, I also developed a deeper understanding of linear algebra and how to structure complex systems.</p>
+<hr>
 <h2 id="technical-highlights">Technical Highlights</h2>
 <ul>
 <li><strong>Blinn-Phong Lighting</strong> – Implemented per-fragment lighting with diffuse, specular, and ambient components.</li>
@@ -44,6 +46,7 @@
 <li><strong>Entity-Component-System (ECS)</strong> – Designed a lightweight ECS for flexible scene and object management.</li>
 <li><strong>Shader Pipeline</strong> – Wrote GLSL vertex and fragment shaders for materials, lighting, and depth passes.</li>
 </ul>
+<hr>
 <h2 id="architecture">Architecture</h2>
 <p>I ended up going with an <strong>ECS system</strong> mainly out of curiosity, though it also provides performance benefits by exploiting memory locality. I didn’t take a purist stance — sometimes I kept related items together in structs rather than splitting them into separate components, and I used interfaces where it made sense, such as for lights.</p>
 <p>I also used <strong>singletons</strong> to make resource management easier. Graphics and game development often lend themselves well to a global singleton pattern. I did consider adding <strong>thread pools</strong> for some resource management tasks, like loading OBJ files or managing shaders, to further improve performance.</p>
@@ -82,16 +85,19 @@
 <li><strong>Spot light shadows</strong>: perspective depth maps.</li>
 <li>Challenges included biasing, resolution limits, and performance trade-offs.</li>
 </ul>
-<h2 id="visuals">Visuals</h2>
+<hr>
+<h2 id="demo">Demo</h2>
 <p><video autoplay loop muted playsinline width="100%"  style="border-radius: 12px; overflow: hidden;">&gt;
 <source src="/thumbs/renderer.mp4" type="video/mp4">
 Your browser does not support the video tag.
 </video></p>
+<hr>
 <h2 id="reflections">Reflections</h2>
 <p>This project was a big learning experience. One of the initial challenges was wrapping my head around how graphics are done, especially at the scale they are used in real-time rendering. In graphics, there are many areas where you just have to try something, see how it works, and learn the tricks along the way. For instance, using cameras freely and thinking of pixels as data like in shadow mapping can be non-obvious if you haven’t done graphics before.</p>
 <p>Learning shaders was also a lot of fun, though debugging them could be frustrating. Error messages are often vague, and sometimes things would just appear completely black, which was confusing at first. I know I still have a lot of work to do to become truly proficient with shaders.</p>
 <p>When it came to architecting the systems, it was all about deciding what belongs where and keeping the system as simple as possible. At one point, I considered adding a base class for lights on top of the interface, but I decided against it to avoid over-complicating the system unnecessarily.</p>
 <p>A project like this can go on forever, trying to improve or add features. Full game engines are massive, and throughout this project I found myself wondering whether I wanted to build a game or a game engine. There’s probably a happy middle ground, depending on the type of game you want to make.</p>
+<hr>
 <h2 id="whats-next">What&rsquo;s Next?</h2>
 <p>I actually built off of this project to create my <strong>Drone Sim</strong> project. In the future, I might add more features here, but I’m more likely to explore a game engine next and try making a small game. I might also experiment with <strong>Vulkan</strong> to deepen my graphics knowledge.</p>
 </article>

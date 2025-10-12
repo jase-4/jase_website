@@ -36,11 +36,13 @@
     <article><h2 id="overview">Overview</h2>
 <p>I built an embedded system that fuses accelerometer and gyroscope data from an <strong>MPU-6050</strong> on an <strong>ESP32</strong> using <strong>Rust</strong> and <strong>Embassy</strong>. The fused data is then sent over <strong>CAN bus</strong> to an <strong>STM32</strong> running <strong>FreeRTOS</strong>, where a simple sensor fusion algorithm processes it further. The STM32 then transmits the processed data over CAN bus again to another ESP32 (also running Rust and Embassy), which sends it over <strong>Wi-Fi</strong> to a <strong>Python server</strong> for real-time display.</p>
 <p>This setup gave me a working distributed embedded system — multiple microcontrollers communicating over CAN and Wi-Fi, sharing real sensor data in real time.</p>
+<hr>
 <h2 id="motivation">Motivation</h2>
 <p>This project started after watching some YouTube videos where people built cool projects with screens, actuators, and 3D-printed parts. I realized there was nothing stopping me from doing the same. Around that time, I was also working on my <strong>drone simulator</strong>, and I started thinking about what it would take to build my own real drone someday.</p>
 <p>I wanted a project that interacted with the real world — not just something that lived entirely on my computer. That’s when I decided to work with an <strong>STM32 dev board</strong> and integrate it with other embedded hardware.</p>
 <p>Even though I studied <strong>Computer Science</strong>, I’d already had some exposure to low-level systems — working with <strong>Raspberry Pi</strong>, <strong>ARM assembly</strong>, and <strong>computer architecture</strong> classes. This project felt like the perfect way to combine all that knowledge into one system.</p>
 <p>My main goal was to get something working end-to-end while learning as much as I could about embedded systems in a broad sense. I see this project as a <strong>foundation</strong> — something that sets me up to take on more advanced embedded and robotics projects in the future.</p>
+<hr>
 <h2 id="system-overview">System Overview</h2>
 <ul>
 <li>Diagram of nodes + connections:
@@ -53,11 +55,13 @@
 </li>
 <li>CAN bus as the backbone for inter-node communication.</li>
 </ul>
+<hr>
 <h2 id="node-breakdown">Node Breakdown</h2>
+<p>The system uses CAN bus (MCP2515 controllers with TJA1050 transceivers) as the communication backbone between nodes.</p>
 <h3 id="esp32-sensor-node">ESP32 Sensor Node</h3>
 <ul>
 <li>Runs Rust with Embassy async runtime.</li>
-<li>Interfaces with sensors (list which ones).</li>
+<li>Interfaces with MPU-6050 (accelerometer/gyroscope) and QMC5883L (magnetometer)</li>
 <li>Publishes data onto CAN bus.</li>
 </ul>
 <h3 id="stm32-fusion-node">STM32 Fusion Node</h3>
@@ -78,10 +82,16 @@
 <li>Collects and displays sensor data.</li>
 <li>Could be extended for logging, visualization, or control.</li>
 </ul>
+<hr>
+<h2 id="system-diagram">System Diagram</h2>
+<img src="/thumbs/embed_diagram.png" alt="System Architecture Diagram" style="width: 100%; border-radius: 12px; margin: 1.5rem 0;">
+<hr>
+<h2 id="demo">Demo</h2>
 <video autoplay loop muted playsinline width="100%" style="border-radius: 12px; overflow: hidden;">
   <source src="/thumbs/embed.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
+<hr>
 <h2 id="reflections">Reflections</h2>
 <p>I really enjoyed learning more about embedded systems throughout this project. I do wish it had been a bit more interactive, but it served as a great starting point for future ones. Most of the challenges came from getting familiar with how things are done differently compared to traditional software development — especially how much closer you have to think to the hardware.</p>
 <p>There was just a lot to absorb overall: understanding timing, electrical concepts, and constantly asking <em>why</em> things worked the way they did. The biggest area I need to improve is timing — specifically, how to manage timing across systems and what’s considered acceptable for different tasks. For this project, it wasn’t critical, but I did run into issues like publishing CAN bus messages too quickly, which caused overruns, or fusion problems when certain data streams lagged behind due to overly long delays.</p>
@@ -93,7 +103,8 @@
 </ul>
 <p>One idea I didn’t get around to implementing was an <strong>end-to-end test pipeline</strong> — sending a test command from the Python server to the Wi-Fi node that triggers a known sensor value through the entire network. That would’ve been a nice way to validate the full data path.</p>
 <p>I also planned to add another sensor for temperature and pressure, but getting reliable readings turned out to be much more involved, and most of the Rust crates I tried weren’t functioning correctly. At that point, I decided it was better to move on. This project could’ve easily kept growing into a jumble of random sensors and screens, so I’m glad I wrapped it up when I did — it’s a strong foundation to build on.</p>
-<h2 id="whats-next">What’s Next</h2>
+<hr>
+<h2 id="whats-next-">What’s Next ?</h2>
 <p>Definitely more embedded projects — but not direct extensions of this one. I want to start experimenting with <strong>motors and actuators</strong>, and I also have an <strong>FPGA</strong> and a <strong>K210 AI dev board</strong> that I’d like to use for computer vision experiments. Eventually, I’d like to move into <strong>PCB design</strong> as well.</p>
 <p>I’m still very much in the “idea phase” for my next few builds, but a <strong>3D printer</strong> would open up a lot of new possibilities. Once I have one, I’ll probably revisit the actuator and robotics side more seriously — being able to make my own parts would make those projects way more interesting.</p>
 </article>

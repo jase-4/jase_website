@@ -12,14 +12,20 @@ weight: 3
 ## Overview
 I built a real-time 3D renderer from scratch using OpenGL and C++. The renderer supports dynamic lighting and shadow mapping, and uses an architecture that combines an Entity-Component-System (ECS) with interface-based polymorphism.
 
+---
+
 ## Motivation
 I was thinking about areas of computer science I hadn’t explored yet. Surprising even though I play video games, I hadn’t really explored graphics or game development that much. I decided to write a renderer from scratch in order to really understand the graphics pipeline. Along the way, I also developed a deeper understanding of linear algebra and how to structure complex systems.
+
+---
 
 ## Technical Highlights
 - **Blinn-Phong Lighting** – Implemented per-fragment lighting with diffuse, specular, and ambient components.  
 - **Shadow Mapping** – Created depth-based shadow maps with adjustable bias to avoid artifacts.  
 - **Entity-Component-System (ECS)** – Designed a lightweight ECS for flexible scene and object management.  
 - **Shader Pipeline** – Wrote GLSL vertex and fragment shaders for materials, lighting, and depth passes.  
+
+---
 
 ## Architecture
 
@@ -28,7 +34,6 @@ I ended up going with an **ECS system** mainly out of curiosity, though it also 
 I also used **singletons** to make resource management easier. Graphics and game development often lend themselves well to a global singleton pattern. I did consider adding **thread pools** for some resource management tasks, like loading OBJ files or managing shaders, to further improve performance.
 
 Overall, I’m very happy with how I designed the system. It allowed me to experiment with architecture decisions while keeping the renderer flexible and efficient.
-
 
 ### ECS and Systems
 - Entities store data as components; systems operate on the data to drive behavior and rendering.  
@@ -59,12 +64,16 @@ Overall, I’m very happy with how I designed the system. It allowed me to exper
 - **Spot light shadows**: perspective depth maps.  
 - Challenges included biasing, resolution limits, and performance trade-offs.  
 
-##  Visuals
+---
+
+##  Demo
 
 <video autoplay loop muted playsinline width="100%"  style="border-radius: 12px; overflow: hidden;">>
   <source src="/thumbs/renderer.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
+
+---
 
 ## Reflections
 
@@ -75,6 +84,8 @@ Learning shaders was also a lot of fun, though debugging them could be frustrati
 When it came to architecting the systems, it was all about deciding what belongs where and keeping the system as simple as possible. At one point, I considered adding a base class for lights on top of the interface, but I decided against it to avoid over-complicating the system unnecessarily.
 
 A project like this can go on forever, trying to improve or add features. Full game engines are massive, and throughout this project I found myself wondering whether I wanted to build a game or a game engine. There’s probably a happy middle ground, depending on the type of game you want to make.
+
+---
 
 ## What's Next?
 

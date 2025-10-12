@@ -15,6 +15,8 @@ I built an embedded system that fuses accelerometer and gyroscope data from an *
 
 This setup gave me a working distributed embedded system — multiple microcontrollers communicating over CAN and Wi-Fi, sharing real sensor data in real time.
 
+---
+
 ## Motivation
 This project started after watching some YouTube videos where people built cool projects with screens, actuators, and 3D-printed parts. I realized there was nothing stopping me from doing the same. Around that time, I was also working on my **drone simulator**, and I started thinking about what it would take to build my own real drone someday.  
 
@@ -24,6 +26,8 @@ Even though I studied **Computer Science**, I’d already had some exposure to l
 
 My main goal was to get something working end-to-end while learning as much as I could about embedded systems in a broad sense. I see this project as a **foundation** — something that sets me up to take on more advanced embedded and robotics projects in the future.
 
+---
+
 ## System Overview
 - Diagram of nodes + connections:
   - **ESP32 Sensor Node (Rust/Embassy):** gathers raw sensor data.
@@ -32,10 +36,15 @@ My main goal was to get something working end-to-end while learning as much as I
   - **Server:** receives data and displays it.
 - CAN bus as the backbone for inter-node communication.
 
+---
+
 ## Node Breakdown
+
+The system uses CAN bus (MCP2515 controllers with TJA1050 transceivers) as the communication backbone between nodes.
+
 ### ESP32 Sensor Node
 - Runs Rust with Embassy async runtime.
-- Interfaces with sensors (list which ones).
+- Interfaces with MPU-6050 (accelerometer/gyroscope) and QMC5883L (magnetometer)
 - Publishes data onto CAN bus.
 
 ### STM32 Fusion Node
@@ -53,10 +62,20 @@ My main goal was to get something working end-to-end while learning as much as I
 - Collects and displays sensor data.
 - Could be extended for logging, visualization, or control.
 
+---
+
+## System Diagram
+<img src="/thumbs/embed_diagram.png" alt="System Architecture Diagram" style="width: 100%; border-radius: 12px; margin: 1.5rem 0;">
+
+---
+
+## Demo
 <video autoplay loop muted playsinline width="100%" style="border-radius: 12px; overflow: hidden;">
   <source src="/thumbs/embed.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
+
+---
 
 ## Reflections
 I really enjoyed learning more about embedded systems throughout this project. I do wish it had been a bit more interactive, but it served as a great starting point for future ones. Most of the challenges came from getting familiar with how things are done differently compared to traditional software development — especially how much closer you have to think to the hardware.  
@@ -72,7 +91,9 @@ One idea I didn’t get around to implementing was an **end-to-end test pipeline
 
 I also planned to add another sensor for temperature and pressure, but getting reliable readings turned out to be much more involved, and most of the Rust crates I tried weren’t functioning correctly. At that point, I decided it was better to move on. This project could’ve easily kept growing into a jumble of random sensors and screens, so I’m glad I wrapped it up when I did — it’s a strong foundation to build on.
 
-## What’s Next
+---
+
+## What’s Next ?
 Definitely more embedded projects — but not direct extensions of this one. I want to start experimenting with **motors and actuators**, and I also have an **FPGA** and a **K210 AI dev board** that I’d like to use for computer vision experiments. Eventually, I’d like to move into **PCB design** as well.  
 
 I’m still very much in the “idea phase” for my next few builds, but a **3D printer** would open up a lot of new possibilities. Once I have one, I’ll probably revisit the actuator and robotics side more seriously — being able to make my own parts would make those projects way more interesting.

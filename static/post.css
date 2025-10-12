@@ -55,6 +55,8 @@ body {
   text-align: center;
 }
 
+
+
 .container h2 {
   margin: 0.2rem auto 0.4rem auto;
   font-size: clamp(1.2rem, 4vw, 1.8rem);
@@ -68,6 +70,21 @@ body {
 
   color:  #fdf0d5;
   text-align: center;
+}
+
+hr {
+    /* Remove default border effects */
+    border: none;
+    
+    /* Set the line thickness */
+    height: 1.5px;
+    
+    /* Apply your accent color */
+    background-color: #8ecae6; 
+    
+    /* Optional: Sets the width and centers the line, adding clear vertical spacing */
+   
+    margin: 2rem auto; 
 }
 
 
