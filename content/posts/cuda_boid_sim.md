@@ -80,4 +80,4 @@ For CUDA itself — probably nothing. I don't plan to continue this project. But
 
 ## References
 
-<a href="https://vanhunteradams.com/Pico/Animal_Movement/Boids-alg" class="custom-link">Boids Algorithm Reference</a>
+<a href="https://vanhunteradams.com/Pico/Animal_Movement/Boids-algorithm.html" class="custom-link">Boids Algorithm Reference</a>
