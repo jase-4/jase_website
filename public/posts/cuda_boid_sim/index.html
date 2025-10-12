@@ -49,34 +49,38 @@
 </ul>
 <hr>
 <h2 id="performance-results">Performance Results</h2>
-<p>The CUDA implementation achieved dramatic performance improvements over the single-threaded CPU baseline:</p>
+<p>The CUDA implementation achieved dramatic performance improvements over the single-threaded CPU baseline. <strong>To ensure a valid performance comparison, the same set of Boid simulation parameters (like protected range, visual range, speed, etc.) was used for both the CUDA and CPU versions.</strong> <em>(Note: These specific parameter values were primarily tuned to produce the most visually appealing and dynamic flocking behavior on the high-speed CUDA implementation.)</em></p>
 <ul>
 <li><strong>At 60 FPS:</strong> 16,000 boids (CUDA) vs 450 boids (CPU) — <strong>35.6× improvement</strong></li>
-<li><strong>At 45 FPS:</strong> 20,000 boids (CUDA) vs 600 boids (CPU) — <strong>33.3× improvement</strong></li>
-<li><strong>At 30 FPS:</strong> 28,000 boids (CUDA) vs 700 boids (CPU) — <strong>40× improvement</strong></li>
+<li><strong>At 45 FPS:</strong> 20,000 boids (CUDA) vs 600 boids (CPU) — <strong>33.3× improvement</strong> - <strong>At 30 FPS:</strong> 28,000 boids (CUDA) vs 700 boids (CPU) — <strong>40× improvement</strong></li>
 </ul>
 <p>The CUDA version consistently maintained 35-40× higher agent counts at equivalent frame rates, demonstrating the massive parallelization benefits for embarrassingly parallel workloads.</p>
 <hr>
 <h2 id="demos">Demos</h2>
 <h3 id="gpu">GPU</h3>
+<p>20,000 boids
 <video autoplay loop muted playsinline width="100%" style="border-radius: 12px; overflow: hidden;">
-  <source src="/thumbs/cuda_sim.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+<source src="/thumbs/cuda_sim.mp4" type="video/mp4">
+Your browser does not support the video tag.
+</video></p>
 <h3 id="cpu">CPU</h3>
+<p>600 boids
 <video autoplay loop muted playsinline width="100%" style="border-radius: 12px; overflow: hidden;">
-  <source src="/thumbs/cpu_sim.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+<source src="/thumbs/cpu_boid.mp4" type="video/mp4">
+Your browser does not support the video tag.
+</video></p>
 <hr>
 <h2 id="reflection">Reflection</h2>
 <p>This project was one of my shorter ones, and while I&rsquo;m happy with the results, I&rsquo;m not entirely satisfied with the architecture. Switching between the GPU and CPU versions feels awkward and hacky. That happened because I started with the CPU version and tried to follow the paper&rsquo;s implementation as closely as I could. I also tied the random initialization of each Boid to a class that ended up being required everywhere. I probably could&rsquo;ve refactored that out, but it would&rsquo;ve been a lot of work for something that already works and that I don&rsquo;t plan to revisit.</p>
-<p>The CUDA version&rsquo;s logic is mostly the same, just parallelized. The main issue I ran into was with the CUDA compiler — it didn&rsquo;t like me using a simple wrapper class for 3D vectors even though it had no polymorphic behavior. I also had to enable a setting that allowed linking across multiple CUDA files. I&rsquo;m guessing most people just use one large CUDA file, but I structured the project like I would a typical C++ codebase.</p>
+<p>The CUDA version&rsquo;s logic is mostly the same, just parallelized. The main issue I ran into was with the CUDA compiler — it didn&rsquo;t like me using a simple wrapper class for 3D vectors even though it had no polymorphic behavior. I also had to enable a setting <code>set_target_properties(boid_sim PROPERTIES CUDA_SEPARABLE_COMPILATION ON)</code> that allowed linking across multiple CUDA files. I&rsquo;m guessing most people just use one large CUDA file, but I structured the project like I would a typical C++ codebase.</p>
 <p>Visually, I&rsquo;m really happy with how it turned out. Watching the Boids interact almost feels like a lava lamp with the setup I have. I definitely learned a lot about GPU programming and parallelization throughout this project. That said, I probably wouldn&rsquo;t use CUDA again unless I was being paid to — it&rsquo;s powerful, but not the most enjoyable tool to work with.</p>
 <p>There&rsquo;s still plenty of room for optimization: using tetrahedrons instead of cubes, improving loading and initialization (though it only runs once), and maybe adding lighting. It could also be cool to have each Boid rotate in the direction of its velocity. Overall, I&rsquo;m happy with the visuals and ready to move on to something new.</p>
 <hr>
 <h2 id="whats-next">What&rsquo;s Next?</h2>
 <p>For CUDA itself — probably nothing. I don&rsquo;t plan to continue this project. But for GPU programming in general, definitely. Graphics programming is already a kind of GPU work, but for compute tasks, I&rsquo;d like to try out <strong>OpenCL</strong> next, especially for cross-vendor compatibility in gaming scenarios where I wouldn&rsquo;t want to write both CUDA and whatever AMD uses.</p>
+<hr>
+<h2 id="references">References</h2>
+<p><a href="https://vanhunteradams.com/Pico/Animal_Movement/Boids-alg" class="custom-link">Boids Algorithm Reference</a></p>
 </article>
    <p class="back-link"><a href="/posts/">← Back to Projects</a></p>
   </main>

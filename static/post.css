@@ -116,6 +116,17 @@ hr {
   transform: translateY(-2px);
 }
 
+.custom-link {
+    color: #3498db;           /* link color */
+    text-decoration: underline;     /* remove underline, optional */
+   
+}
+
+.custom-link:hover {
+   
+    color: #1a5276;            /* optional: change text color on hover */
+}
+
 /* ===== Footer ===== */
 .footer {
   background-color: #2a2835;

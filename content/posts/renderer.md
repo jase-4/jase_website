@@ -91,3 +91,9 @@ A project like this can go on forever, trying to improve or add features. Full g
 
 I actually built off of this project to create my **Drone Sim** project. In the future, I might add more features here, but I’m more likely to explore a game engine next and try making a small game. I might also experiment with **Vulkan** to deepen my graphics knowledge.
 
+---
+
+## References
+
+<a href="https://learnopengl.com/" class="custom-link">Learn OpenGL</a>
+
