@@ -6,7 +6,7 @@ thumbnail: "thumbs/embed2.png"
 video: "thumbs/embed3.mp4" 
 description: "Distributed CAN bus network using Rust (Embassy) on ESP32 nodes and C++ (FreeRTOS) on STM32"
 github: "https://github.com/jase-4/embedded-sensor-network" 
-weight: 2
+weight: 3
 ---
 
 

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <title>4-DOF Robotic Arm</title>
+
+   <link rel="icon" type="image/png" href="/thumbs/logo.png">
+
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/post.css">
+</head>
+
+
+
+<body>
+ <nav class="side-button-group">
+      <a href="/" class="button-link">Home</a>
+       <a href="/posts/" class="button-link">Projects</a>
+    <a href="https://github.com/jase-4" target="_blank" class="button-link">GitHub</a>
+     <a href="/resume.pdf" class="button-link">Resume</a>
+   
+  </nav>
+<div class="container">
+  <main>
+    <h1>4-DOF Robotic Arm</h1>
+   
+  <p class="project-season">Spring 2026</p>
+
+ 
+    <a href="https://github.com/jase-4/[your-repo]" target="_blank" class="github-link">View on GitHub →</a>
+  
+    <article><h2 id="overview">Overview</h2>
+<p>I designed and built a physical 4-DOF robotic arm from scratch — CAD in Fusion 360, 3D printed parts, custom power distribution PCB, STM32 firmware in C, and a Python host interface communicating over UART.</p>
+<hr>
+<h2 id="motivation">Motivation</h2>
+<p>After my sensor fusion project I wanted to stop just reading the real world and actually move something in it. Getting a 3D printer made that suddenly viable — I could design and iterate on parts myself instead of being limited to whatever I could buy.</p>
+<hr>
+<h2 id="technical-highlights">Technical Highlights</h2>
+<ul>
+<li><strong>STM32 Firmware</strong> – Real-time PWM servo control with a 10 ms velocity-limited control loop.</li>
+<li><strong>Custom PCB</strong> – Consolidated power distribution to improve servo stability and reduce wiring complexity.</li>
+<li><strong>Python Host Interface</strong> – UART state machine for scripted autonomous pose and gripper control.</li>
+<li><strong>CAD &amp; Fabrication</strong> – Designed all parts in Fusion 360 and 3D printed them.</li>
+</ul>
+<hr>
+<h2 id="demos">Demos</h2>
+<p>[your demo video here]</p>
+<hr>
+<h2 id="reflection">Reflection</h2>
+<p>[This is the most important section — what carried over from previous projects, what surprised you about physical builds vs pure software, what&rsquo;s still in progress]</p>
+<hr>
+<h2 id="whats-next">What&rsquo;s Next?</h2>
+<p>Building my own drone from scratch.</p>
+</article>
+   <p class="back-link"><a href="/posts/">← Back to Projects</a></p>
+  </main>
+</div>
+
+     <footer class="footer">
+    <p>Thanks for reading!</p>
+  </footer>
+
+</body>
+
+<script src="/nav-bar.js"></script>
+</html>

@@ -6,7 +6,7 @@ thumbnail: "thumbs/drone_sim.png"
 video: "thumbs/drone_short.mp4" 
 description: "Drone simulation in C++ with Bullet physics and OpenGL rendering, integrating Ada/Python flight control and simulated sensor data."
 github: "https://github.com/jase-4/drone-sim"
-weight: 1
+weight: 2
 ---
 
 ## Overview

@@ -2,38 +2,52 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Welcome on My New Hugo Site</title>
-    <link>http://192.168.1.171:1313/</link>
+    <link>http://localhost:1313/</link>
     <description>Recent content in Welcome on My New Hugo Site</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <atom:link href="http://192.168.1.171:1313/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>4-DOF Robotic Arm</title>
+      <link>http://localhost:1313/posts/robot_arm/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/robot_arm/</guid>
+      <description>&lt;h2 id=&#34;overview&#34;&gt;Overview&lt;/h2&gt;&#xA;&lt;p&gt;I designed and built a physical 4-DOF robotic arm from scratch — CAD in Fusion 360, 3D printed parts, custom power distribution PCB, STM32 firmware in C, and a Python host interface communicating over UART.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;motivation&#34;&gt;Motivation&lt;/h2&gt;&#xA;&lt;p&gt;After my sensor fusion project I wanted to stop just reading the real world and actually move something in it. Getting a 3D printer made that suddenly viable — I could design and iterate on parts myself instead of being limited to whatever I could buy.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Drone Sim</title>
-      <link>http://192.168.1.171:1313/posts/drone_sim/</link>
+      <link>http://localhost:1313/posts/drone_sim/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://192.168.1.171:1313/posts/drone_sim/</guid>
+      <guid>http://localhost:1313/posts/drone_sim/</guid>
       <description>&lt;h2 id=&#34;overview&#34;&gt;Overview&lt;/h2&gt;&#xA;&lt;p&gt;I built a real-time drone simulator that brings together physics, graphics, and networking. The simulator uses Bullet Physics, OpenGL, Boost.Asio, and C++ to model realistic drone dynamic. A virtual flight controller, written in Python for rapid prototyping and Ada for reliability, that connects via UDP to command the drone. The system also emulates onboard sensors, making it possible to test control logic in a realistic environment.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;motivation&#34;&gt;Motivation&lt;/h2&gt;&#xA;&lt;p&gt;I wanted to know more about drones and physics simulation as a whole. Every so often I get a urge to explore physics and since I had just built my own renderer, it felt like the perfect opportunity to turn it into a custom drone sim. This project also gave me a deeper understanding of how to structure systems and how the visual and backend sides of simulations interact.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Embedded Distributed Sensor Network</title>
-      <link>http://192.168.1.171:1313/posts/distrib_embed/</link>
+      <link>http://localhost:1313/posts/distrib_embed/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://192.168.1.171:1313/posts/distrib_embed/</guid>
+      <guid>http://localhost:1313/posts/distrib_embed/</guid>
       <description>&lt;h2 id=&#34;overview&#34;&gt;Overview&lt;/h2&gt;&#xA;&lt;p&gt;I built an embedded system that fuses accelerometer and gyroscope data from an &lt;strong&gt;MPU-6050&lt;/strong&gt; on an &lt;strong&gt;ESP32&lt;/strong&gt; using &lt;strong&gt;Rust&lt;/strong&gt; and &lt;strong&gt;Embassy&lt;/strong&gt;. The fused data is then sent over &lt;strong&gt;CAN bus&lt;/strong&gt; to an &lt;strong&gt;STM32&lt;/strong&gt; running &lt;strong&gt;FreeRTOS&lt;/strong&gt;, where a simple sensor fusion algorithm processes it further. The STM32 then transmits the processed data over CAN bus again to another ESP32 (also running Rust and Embassy), which sends it over &lt;strong&gt;Wi-Fi&lt;/strong&gt; to a &lt;strong&gt;Python server&lt;/strong&gt; for real-time display.&lt;/p&gt;</description>
     </item>
     <item>
-      <title>OpenGL Renderer</title>
-      <link>http://192.168.1.171:1313/posts/renderer/</link>
+      <title>Cuda Boid Sim</title>
+      <link>http://localhost:1313/posts/cuda_boid_sim/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://192.168.1.171:1313/posts/renderer/</guid>
-      <description>&lt;h2 id=&#34;overview&#34;&gt;Overview&lt;/h2&gt;&#xA;&lt;p&gt;I built a real-time 3D renderer from scratch using OpenGL and C++. The renderer supports dynamic lighting and shadow mapping, and uses an architecture that combines an Entity-Component-System (ECS) with interface-based polymorphism.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;motivation&#34;&gt;Motivation&lt;/h2&gt;&#xA;&lt;p&gt;I was thinking about areas of computer science I hadn’t explored yet. Surprising even though I play video games, I hadn’t really explored graphics or game development that much. I decided to write a renderer from scratch in order to really understand the graphics pipeline. Along the way, I also developed a deeper understanding of linear algebra and how to structure complex systems.&lt;/p&gt;</description>
+      <guid>http://localhost:1313/posts/cuda_boid_sim/</guid>
+      <description>&lt;h2 id=&#34;overview&#34;&gt;Overview&lt;/h2&gt;&#xA;&lt;p&gt;I built a real-time Boid flocking simulation accelerated with CUDA. The system simulates thousands of agents moving according to flocking rules (separation, alignment, cohesion) and renders them in real time using instanced OpenGL.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;motivation&#34;&gt;Motivation&lt;/h2&gt;&#xA;&lt;p&gt;I wanted to explore GPU computing and parallelization in practice, so I chose CUDA since I&amp;rsquo;m running on an NVIDIA GPU (and, well, they don&amp;rsquo;t exactly give you much of a choice). The Boid algorithm is simple at its core, but once you add hundreds of agents that all need to be rendered, performance becomes a real challenge. I also liked the way other boid projects looked, except most of the ones I saw were in 2D and not 3D, so I made it 3D.&lt;/p&gt;</description>
     </item>
     <item>
-      <title>Cuda Boid Sim</title>
-      <link>http://192.168.1.171:1313/posts/cuda_boid_sim/</link>
+      <title>ROS2 Navigation Benchmark</title>
+      <link>http://localhost:1313/posts/ros2_docker/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://192.168.1.171:1313/posts/cuda_boid_sim/</guid>
-      <description>&lt;h2 id=&#34;overview&#34;&gt;Overview&lt;/h2&gt;&#xA;&lt;p&gt;I built a real-time Boid flocking simulation accelerated with CUDA. The system simulates thousands of agents moving according to flocking rules (separation, alignment, cohesion) and renders them in real time using instanced OpenGL.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;motivation&#34;&gt;Motivation&lt;/h2&gt;&#xA;&lt;p&gt;I wanted to explore GPU computing and parallelization in practice, so I chose CUDA since I&amp;rsquo;m running on an NVIDIA GPU (and, well, they don&amp;rsquo;t exactly give you much of a choice). The Boid algorithm is simple at its core, but once you add hundreds of agents that all need to be rendered, performance becomes a real challenge. I also liked the way other boid projects looked, except most of the ones I saw were in 2D and not 3D, so I made it 3D.&lt;/p&gt;</description>
+      <guid>http://localhost:1313/posts/ros2_docker/</guid>
+      <description>&lt;h2 id=&#34;overview&#34;&gt;Overview&lt;/h2&gt;&#xA;&lt;p&gt;A benchmarking framework for autonomous navigation using ROS2, Nav2, SLAM, and Gazebo. The goal was reproducibility — running one-off navigation trials tells you nothing useful, so I containerized the whole setup and automated 4 parallel trials with Docker Compose to get consistent, comparable results.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;results&#34;&gt;Results&lt;/h2&gt;&#xA;&lt;p&gt;TEST RESULTS SUMMARY&#xA;Total tests:              4&#xA;Successful:               3&#xA;Failed:                   1&#xA;Success rate:             75.0%&#xA;Average completion time:  46.24s&#xA;Average distance:         9.78m&#xA;Average path efficiency:  89.66%&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>OpenGL Renderer</title>
+      <link>http://localhost:1313/posts/renderer/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/renderer/</guid>
+      <description>&lt;h2 id=&#34;overview&#34;&gt;Overview&lt;/h2&gt;&#xA;&lt;p&gt;I built a real-time 3D renderer from scratch using OpenGL and C++. The renderer supports dynamic lighting and shadow mapping, and uses an architecture that combines an Entity-Component-System (ECS) with interface-based polymorphism.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;motivation&#34;&gt;Motivation&lt;/h2&gt;&#xA;&lt;p&gt;I was thinking about areas of computer science I hadn’t explored yet. Surprising even though I play video games, I hadn’t really explored graphics or game development that much. I decided to write a renderer from scratch in order to really understand the graphics pipeline. Along the way, I also developed a deeper understanding of linear algebra and how to structure complex systems.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

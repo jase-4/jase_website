@@ -6,6 +6,7 @@ thumbnail: "thumbs/cuda_boid.png"
 video: "thumbs/boid_short.mp4"   # Optional
 description: "Accelerating Boid Simulations with CUDA and C++, Rendered with OpenGL"
 github: "https://github.com/jase-4/boid-sim"
+weight: 4
 ---
 
 
