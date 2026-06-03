@@ -14,6 +14,7 @@ weight: 5
 I built a benchmarking framework for autonomous navigation using ROS2, Nav2, SLAM, and Gazebo, with a focus on reproducibility. To accomplish this, I used Docker to containerize the entire simulation stack, allowing me to run four navigation trials in parallel under consistent conditions.
 
 <img src="/thumbs/gazebo.png" alt="System Architecture Diagram" style="width: 70%; border-radius: 12px; margin: 1.0rem 0;">
+
 ---
 
 ## Technical Highlights
