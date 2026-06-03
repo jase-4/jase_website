@@ -1,6 +1,6 @@
 ---
 title: "Embedded Distributed Sensor Network"
-season: "Summer - Fall 2025"
+season: "Summer 2025 - Fall 2025"
 draft: false
 thumbnail: "thumbs/embed2.png"
 video: "thumbs/embed3.mp4" 

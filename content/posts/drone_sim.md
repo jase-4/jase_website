@@ -1,6 +1,6 @@
 ---
 title: "Drone Sim"
-season: "Spring - Summer 2025"
+season: "Spring 2025 - Summer 2025"
 draft: false
 thumbnail: "thumbs/drone_sim.png"
 video: "thumbs/drone_short.mp4" 

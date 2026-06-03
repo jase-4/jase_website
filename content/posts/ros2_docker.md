@@ -1,6 +1,6 @@
 ---
 title: "ROS2 Navigation Benchmark"
-season: "Fall - Winter 2025"
+season: "Fall 2025 - Winter 2025"
 draft: false
 thumbnail: "thumbs/gazebo.png"
 video: "thumbs/ros2.mp4" 
