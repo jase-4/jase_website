@@ -12,6 +12,9 @@ weight: 2
 ## Overview
 I built a real-time drone simulator that brings together physics, graphics, and networking. The simulator uses Bullet Physics, OpenGL, Boost.Asio, and C++ to model realistic drone dynamic. A virtual flight controller, written in Python for rapid prototyping and Ada for reliability, that connects via UDP to command the drone. The system also emulates onboard sensors, making it possible to test control logic in a realistic environment.
 
+
+<img src="/thumbs/drone_sim.png" alt="System Architecture Diagram" style="width: 80%; border-radius: 12px; margin: 1.0rem 0;">
+
 ---
 
 ## Motivation

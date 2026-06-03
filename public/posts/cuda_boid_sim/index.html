@@ -35,6 +35,7 @@
   
     <article><h2 id="overview">Overview</h2>
 <p>I built a real-time Boid flocking simulation accelerated with CUDA. The system simulates thousands of agents moving according to flocking rules (separation, alignment, cohesion) and renders them in real time using instanced OpenGL.</p>
+<img src="/thumbs/cuda_boid.png" alt="System Architecture Diagram" style="width: 70%; border-radius: 12px; margin: 1.0rem 0;">
 <hr>
 <h2 id="motivation">Motivation</h2>
 <p>I wanted to explore GPU computing and parallelization in practice, so I chose CUDA since I&rsquo;m running on an NVIDIA GPU (and, well, they don&rsquo;t exactly give you much of a choice). The Boid algorithm is simple at its core, but once you add hundreds of agents that all need to be rendered, performance becomes a real challenge. I also liked the way other boid projects looked, except most of the ones I saw were in 2D and not 3D, so I made it 3D.</p>

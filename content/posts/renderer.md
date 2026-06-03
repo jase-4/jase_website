@@ -12,6 +12,9 @@ weight: 6
 ## Overview
 I built a real-time 3D renderer from scratch using OpenGL and C++. The renderer supports dynamic lighting and shadow mapping, and uses an architecture that combines an Entity-Component-System (ECS) with interface-based polymorphism.
 
+
+<img src="/thumbs/renderer.png" alt="System Architecture Diagram" style="width: 80%; border-radius: 12px; margin: 1.0rem 0;">
+
 ---
 
 ## Motivation

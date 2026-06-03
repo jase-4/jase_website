@@ -15,6 +15,10 @@ I built an embedded system that fuses accelerometer and gyroscope data from an *
 
 This setup gave me a working distributed embedded system — multiple microcontrollers communicating over CAN and Wi-Fi, sharing real sensor data in real time.
 
+
+<img src="/thumbs/embed2.png" alt="System Architecture Diagram" style="width: 80%; border-radius: 12px; margin: 1.0rem 0;">
+
+
 ---
 
 ## Motivation

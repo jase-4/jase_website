@@ -14,6 +14,9 @@ weight: 4
 ## Overview
 I built a real-time Boid flocking simulation accelerated with CUDA. The system simulates thousands of agents moving according to flocking rules (separation, alignment, cohesion) and renders them in real time using instanced OpenGL.
 
+
+<img src="/thumbs/cuda_boid.png" alt="System Architecture Diagram" style="width: 70%; border-radius: 12px; margin: 1.0rem 0;">
+
 ---
 
 ## Motivation

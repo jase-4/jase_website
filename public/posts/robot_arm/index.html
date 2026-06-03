@@ -21,7 +21,11 @@
       <a href="/" class="button-link">Home</a>
        <a href="/posts/" class="button-link">Projects</a>
     <a href="https://github.com/jase-4" target="_blank" class="button-link">GitHub</a>
+    <a href="https://www.linkedin.com/in/jase-branch/" target="_blank" class="button-link">LinkedIn</a>
+   
      <a href="/resume.pdf" class="button-link">Resume</a>
+      
+  </nav>
    
   </nav>
 <div class="container">
@@ -31,31 +35,82 @@
   <p class="project-season">Spring 2026</p>
 
  
-    <a href="https://github.com/jase-4/[your-repo]" target="_blank" class="github-link">View on GitHub →</a>
+    <a href="https://github.com/jase-4/4-DOF-Robot-Arm" target="_blank" class="github-link">View on GitHub →</a>
   
-    <article><h2 id="overview">Overview</h2>
-<p>I designed and built a physical 4-DOF robotic arm from scratch — CAD in Fusion 360, 3D printed parts, custom power distribution PCB, STM32 firmware in C, and a Python host interface communicating over UART.</p>
+    <article><hr>
+<h2 id="overview">Overview</h2>
+<p>I designed and built a physical 4-DOF robotic arm from scratch, combining embedded software, PCB design, CAD, and 3D printing into a single project. The system uses an STM32 microcontroller to control four servos and a gripper, while a Python host application communicates with the arm over UART.</p>
+<p>This project was my first serious attempt at building a robotic system that could physically interact with the world. It was also my first custom PCB and one of my largest CAD projects to date.</p>
+<h3 id="demo">Demo</h3>
+<p><video autoplay loop muted playsinline width="100%"  style="border-radius: 12px; overflow: hidden;">&gt;
+<source src="/thumbs/robot.mp4" type="video/mp4">
+Your browser does not support the video tag.
+</video></p>
 <hr>
 <h2 id="motivation">Motivation</h2>
-<p>After my sensor fusion project I wanted to stop just reading the real world and actually move something in it. Getting a 3D printer made that suddenly viable — I could design and iterate on parts myself instead of being limited to whatever I could buy.</p>
+<p>After completing several embedded projects, I wanted to build something that could actually move. Reading sensors and collecting data is interesting, but there is something different about watching code turn into physical movement.</p>
+<p>Around the same time, I bought a 3D printer. Suddenly robotics projects felt much more accessible because I could design and manufacture my own parts instead of trying to work entirely with off-the-shelf hardware.</p>
+<p>Since I already had experience with embedded development, a robotic arm felt like a natural next step. It would let me combine software, electronics, CAD, and manufacturing into a single project while learning more about robotics and actuator control.</p>
 <hr>
 <h2 id="technical-highlights">Technical Highlights</h2>
 <ul>
-<li><strong>STM32 Firmware</strong> – Real-time PWM servo control with a 10 ms velocity-limited control loop.</li>
-<li><strong>Custom PCB</strong> – Consolidated power distribution to improve servo stability and reduce wiring complexity.</li>
-<li><strong>Python Host Interface</strong> – UART state machine for scripted autonomous pose and gripper control.</li>
-<li><strong>CAD &amp; Fabrication</strong> – Designed all parts in Fusion 360 and 3D printed them.</li>
+<li><strong>STM32 Firmware</strong> – Real-time PWM servo control with velocity limiting for smoother motion.</li>
+<li><strong>Custom PCB</strong> – Designed a dedicated servo power distribution board to reduce wiring complexity and save space.</li>
+<li><strong>Python Host Interface</strong> – UART communication for commanding arm poses and gripper actions.</li>
+<li><strong>CAD &amp; Fabrication</strong> – Designed all structural components in Fusion 360 and manufactured them with a 3D printer.</li>
+<li><strong>Mechanical Design</strong> – Developed a rack-and-pinion gripper and custom servo mounting system.</li>
 </ul>
+<img src="/thumbs/robot2.jpeg" alt="System Architecture Diagram" style="width: 80%; border-radius: 12px; margin: 1.0rem 0;">
 <hr>
-<h2 id="demos">Demos</h2>
-<p>[your demo video here]</p>
+<h2 id="mechanical-design--3d-printing">Mechanical Design &amp; 3D Printing</h2>
+<p>One of the main design constraints was using a collection of inexpensive 9g servos that I had purchased years ago when I first started learning embedded programming.</p>
+<p>While they significantly limited the payload capacity of the arm, they also helped keep the project focused. Instead of immediately jumping to larger motors and more complicated control systems, I could focus on learning the fundamentals of mechanical design and robotics. Looking back, that was probably a good thing because it prevented the project from growing far beyond its original scope.</p>
+<p>Before this project, my CAD experience was fairly limited. I had designed a monitor stand for my desk and printed plenty of decorative models, but this was my first time creating a mechanical system where dimensions and tolerances actually mattered.</p>
+<p>The arm brackets themselves were relatively straightforward. Most of the work involved figuring out the correct dimensions for the servo mounts. Like many engineering problems, this turned into a cycle of printing, testing, adjusting dimensions, and printing again until everything fit properly.</p>
+<p>The base went through several revisions throughout development. Initially it was much smaller, but after adding the custom PCB I had to increase its size. In hindsight, that ended up helping because the arm occasionally showed signs of tipping over even after I added speed limits to the motion.</p>
+<p>One thing I am still not completely happy with is the accessibility of some of the screws inside the base. It works, but assembly and maintenance are more annoying than they should be.</p>
+<p>The gripper was by far the most difficult component to design.</p>
+<p>The rack-and-pinion mechanism looked simple enough on paper, but getting the racks, gears, and servo aligned correctly required several redesigns. Looking back, many of these issues could have been caught much earlier if I had made better use of CAD assemblies.</p>
+<p>One memorable issue involved the racks being roughly 1 mm too short, preventing them from properly meshing with the gears. After adjusting the design and printing new parts, there was still a small amount of play in the system. The final solution was admittedly not very elegant: a tiny folded piece of a gum wrapper used as a shim.</p>
+<p>Despite the challenges, I am very happy with how the final gripper and overall arm turned out.</p>
+<img src="/thumbs/fusion.png" alt="System Architecture Diagram" style="width: 70%; border-radius: 12px; margin: 1.0rem 0;">
+<hr>
+<h2 id="pcb-design">PCB Design</h2>
+<p>The custom PCB was not part of the original plan.</p>
+<p>Early prototypes used a buck converter module and terminal blocks mounted inside the base. The setup worked, but it occupied a surprising amount of space and created a mess of wiring. About halfway through the project, I decided it was a good opportunity to finally learn PCB design and create a dedicated servo power distribution board.</p>
+<p>I intentionally kept the design simple. Rather than integrating voltage regulation and the microcontroller directly onto the PCB, I continued using existing modules and development boards. At this stage I wanted to learn PCB design itself rather than tackle several new challenges at once.</p>
+<p>Designing the board was probably one of the most nerve-racking parts of the entire project.</p>
+<p>If I make a mistake in software, I can usually fix it immediately. If I make a mistake in CAD, I can redesign a part and print another copy within a few hours. PCBs are different. Once the order is submitted, there is nothing left to do except wait and hope you did not miss something important.</p>
+<p>I was impatient enough to pay extra for expedited shipping, which only increased the pressure. After spending several days refreshing the tracking page, the package finally arrived and it was time for the moment every PCB designer knows: plugging it in and hoping nothing catches fire.</p>
+<p>Fortunately, the board worked on the first revision.</p>
+<p>The design also gave me an opportunity to apply concepts I had been learning about electronics design, including decoupling capacitors, power distribution, and copper pours. Prior to this project, I mostly thought of PCBs as collections of traces. Learning about power planes and their role in current distribution and noise reduction was a useful introduction to more advanced PCB design concepts.</p>
+<img src="/thumbs/schematic.png" alt="System Architecture Diagram" style="width: 33%; border-radius: 12px; margin: 1.0rem 0;">
+<img src="/thumbs/layout.png" alt="System Architecture Diagram" style="width: 33%; border-radius: 12px; margin: 1.0rem 0;">
+<img src="/thumbs/3Dboard.png" alt="System Architecture Diagram" style="width: 33%; border-radius: 12px; margin: 1.0rem 0;">
+<img src="/thumbs/board.jpeg" alt="System Architecture Diagram" style="width: 60%; border-radius: 12px; margin: 1.0rem 0;">
+<hr>
+<h2 id="software--controls">Software &amp; Controls</h2>
+<p>The software side of the project was where I felt the most comfortable.</p>
+<p>The STM32 firmware generates the PWM signals used to control each servo and manages communication with the host computer. On the PC side, a Python application sends commands over UART to control arm movement and gripper actions.</p>
+<p>Compared to the mechanical and electrical portions of the project, the software architecture was relatively straightforward. Most of the challenges came from integrating everything together and ensuring movement remained smooth and predictable.</p>
+<p>Since the servos were relatively weak, adding velocity limits helped reduce sudden movements and made the arm behave much more reliably.</p>
 <hr>
 <h2 id="reflection">Reflection</h2>
-<p>[This is the most important section — what carried over from previous projects, what surprised you about physical builds vs pure software, what&rsquo;s still in progress]</p>
+<p>Overall, I am extremely happy with how this project turned out.</p>
+<p>It was the first project where I truly combined embedded systems, CAD, 3D printing, PCB design, and software into a single working system. Every area presented new challenges, and every area taught me something useful.</p>
+<p>If I were starting over today, I would make much heavier use of CAD assemblies and spend more time thinking about maintainability during the mechanical design phase. Several of the fitment issues I encountered could have been identified before printing anything.</p>
+<p>Part of me also wishes I had integrated the microcontroller directly onto the PCB. However, that is easy to say now that the project works. For a first PCB design, keeping the electronics modular was probably the right decision.</p>
+<p>I occasionally wonder what the arm could have accomplished with larger motors and position feedback sensors. Those additions would have enabled much more advanced control strategies and greater payload capacity, although they also would have increased the complexity and cost of the project significantly.</p>
+<p>Regardless of its limitations, seeing the arm successfully pick up and move objects is incredibly satisfying. Watching something move because of hardware and software that I designed myself never really gets old.</p>
 <hr>
 <h2 id="whats-next">What&rsquo;s Next?</h2>
-<p>Building my own drone from scratch.</p>
-</article>
+<p>My next major project will be building a custom drone.</p>
+<p>The exact scope is still evolving. It may end up being a relatively straightforward manually piloted aircraft, an FPV platform, or something with autonomous capabilities.</p>
+<img src="/thumbs/pic1.jpeg" alt="System Architecture Diagram" style="width: 40%; border-radius: 12px; margin: 1.0rem 0;">
+<img src="/thumbs/pic2.jpeg" alt="System Architecture Diagram" style="width: 50%; border-radius: 12px; margin: 1.0rem 0;">
+<img src="/thumbs/pic3.jpeg" alt="System Architecture Diagram" style="width: 40%; border-radius: 12px; margin: 1.0rem 0;">
+<img src="/thumbs/pic4.jpeg" alt="System Architecture Diagram" style="width: 50%; border-radius: 12px; margin: 1.0rem 0;">
+<img src="/thumbs/pic5.jpeg" alt="System Architecture Diagram" style="width: 50%; border-radius: 12px; margin: 1.0rem 0;"></article>
    <p class="back-link"><a href="/posts/">← Back to Projects</a></p>
   </main>
 </div>

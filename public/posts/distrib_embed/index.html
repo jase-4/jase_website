@@ -36,6 +36,7 @@
     <article><h2 id="overview">Overview</h2>
 <p>I built an embedded system that fuses accelerometer and gyroscope data from an <strong>MPU-6050</strong> on an <strong>ESP32</strong> using <strong>Rust</strong> and <strong>Embassy</strong>. The fused data is then sent over <strong>CAN bus</strong> to an <strong>STM32</strong> running <strong>FreeRTOS</strong>, where a simple sensor fusion algorithm processes it further. The STM32 then transmits the processed data over CAN bus again to another ESP32 (also running Rust and Embassy), which sends it over <strong>Wi-Fi</strong> to a <strong>Python server</strong> for real-time display.</p>
 <p>This setup gave me a working distributed embedded system — multiple microcontrollers communicating over CAN and Wi-Fi, sharing real sensor data in real time.</p>
+<img src="/thumbs/embed2.png" alt="System Architecture Diagram" style="width: 80%; border-radius: 12px; margin: 1.0rem 0;">
 <hr>
 <h2 id="motivation">Motivation</h2>
 <p>This project started after watching some YouTube videos where people built cool projects with screens, actuators, and 3D-printed parts. I realized there was nothing stopping me from doing the same. Around that time, I was also working on my <strong>drone simulator</strong>, and I started thinking about what it would take to build my own real drone someday.</p>
