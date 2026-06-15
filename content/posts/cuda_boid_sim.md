@@ -68,9 +68,9 @@ The CUDA version consistently maintained 35-40× higher agent counts at equivale
 
 This project was one of my shorter ones, and while I'm happy with the results, I'm not entirely satisfied with the architecture. Switching between the GPU and CPU versions feels awkward and hacky. That happened because I started with the CPU version and tried to follow the paper's implementation as closely as I could. I also tied the random initialization of each Boid to a class that ended up being required everywhere. I probably could've refactored that out, but it would've been a lot of work for something that already works and that I don't plan to revisit.
 
-The CUDA version's logic is mostly the same, just parallelized. The main issue I ran into was with the CUDA compiler — it didn't like me using a simple wrapper class for 3D vectors even though it had no polymorphic behavior. I also had to enable a setting `set_target_properties(boid_sim PROPERTIES CUDA_SEPARABLE_COMPILATION ON)` that allowed linking across multiple CUDA files. I'm guessing most people just use one large CUDA file, but I structured the project like I would a typical C++ codebase.
+The CUDA version's logic is mostly the same, just parallelized. The main issue I ran into was with the CUDA compiler. It didn't like me using a simple wrapper class for 3D vectors even though it had no polymorphic behavior. I also had to enable a setting `set_target_properties(boid_sim PROPERTIES CUDA_SEPARABLE_COMPILATION ON)` that allowed linking across multiple CUDA files. I'm guessing most people just use one large CUDA file, but I structured the project like I would a typical C++ codebase.
 
-Visually, I'm really happy with how it turned out. Watching the Boids interact almost feels like a lava lamp with the setup I have. I definitely learned a lot about GPU programming and parallelization throughout this project. That said, I probably wouldn't use CUDA again unless I was being paid to — it's powerful, but not the most enjoyable tool to work with.  
+Visually, I'm really happy with how it turned out. Watching the Boids interact almost feels like a lava lamp with the setup I have. I definitely learned a lot about GPU programming and parallelization throughout this project. CUDA is powerful for highly parallel workloads, but comes with complexity overhead. For this project it was worth it, but for many tasks higher-level GPU abstractions would be preferable.
 
 There's still plenty of room for optimization: using tetrahedrons instead of cubes, improving loading and initialization (though it only runs once), and maybe adding lighting. It could also be cool to have each Boid rotate in the direction of its velocity. Overall, I'm happy with the visuals and ready to move on to something new.
 
@@ -78,7 +78,7 @@ There's still plenty of room for optimization: using tetrahedrons instead of cub
 
 ## What's Next?
 
-For CUDA itself — probably nothing. I don't plan to continue this project. But for GPU programming in general, definitely. Graphics programming is already a kind of GPU work, but for compute tasks, I'd like to try out **OpenCL** next, especially for cross-vendor compatibility in gaming scenarios where I wouldn't want to write both CUDA and whatever AMD uses.
+For CUDA itself probably nothing. I don't plan to continue this project. But for GPU programming in general, definitely. Graphics programming is already a kind of GPU work, but for compute tasks, I'd like to try out **OpenCL** next, especially for cross-vendor compatibility in gaming scenarios where I wouldn't want to write both CUDA and whatever AMD uses.
 
 ---
 
